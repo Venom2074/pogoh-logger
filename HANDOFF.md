@@ -35,7 +35,7 @@ Keep the existing script, workflow and data as they are. Azure only acts as the 
 
 ## Steps
 
-1. Ask Siddharth whether the Azure CLI (`az`) or VS Code with the Azure Functions extension is installed and signed in. Choose the deploy path from that answer. He is comfortable with the terminal.
+1. Ask Siddharth whether the Azure CLI (`az`), Azure Functions Core Tools (`func`) and `gh` are installed and signed in. If they aren't, ask whether he'd rather use VS Code with the Azure Functions extension. Choose the deploy path from his answer. He is comfortable with the terminal. These commands need network access. If the sandbox blocks them, ask for approval or hand him the exact command to run himself.
 2. Write the timer function and its `requirements.txt`/`host.json`.
 3. Have him create the fine-grained token, then set it as an app setting.
 4. Create the resource group, storage account and Function App on the Consumption plan, then deploy. A US East region is fine.
