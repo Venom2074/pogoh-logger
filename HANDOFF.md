@@ -47,3 +47,56 @@ Keep the existing script, workflow and data as they are. Azure only acts as the 
 - Analyze when station 59 and nearby stations sit empty, by weekday and hour, once a couple of weeks of dense data exist. Nearby stations: 33 Schenley Dr, 49 Technology Dr & Bates, 50 Atwood & Bates, 51 Coltart & Forbes.
 - Pull POGOH historical trip data (monthly XLSX on WPRDC, https://data.wprdc.org/dataset/pogoh-trip-data) to estimate demand before his own data builds up.
 - A personal map and ride-log page for his bike routes from CMU (the Schenley Overlook loop, the Eliza Furnace Trail, and the Mon River loop).
+
+## Local continuation, October 29, 2026
+
+- Repository cloned into `C:\Users\sidds\Documents\Programming\Projects\POGOH Logger`.
+- Added `azure/function_app.py`, host configuration, deployment instructions,
+  and six passing offline tests (Python 3.12, azure-functions 1.24.0).
+  The logger, workflow, fallback schedule, and data files remain unchanged.
+- Installed Azure CLI 2.91.0 and Functions Core Tools 4.15.2.
+- User explicitly approved provisioning the proposed serverless resources.
+  Approval persists; do not ask again for changes necessary within that scope.
+- CLI subscription discovery failed. Targeted login succeeded with
+  `az login --use-device-code --tenant d34675d2-14cc-4439-a694-5859d3071f43 --skip-subscription-discovery --subscription ea5f08ec-9e4c-4299-ae15-e4db4ec46e30`.
+- Verified by ARM: subscription **Azure for Students**, Enabled,
+  quotaId AzureForStudents_2018-01-01, **spendingLimit On**. Keep it enabled;
+  do not add a card, upgrade the subscription, or assume free-grant eligibility.
+- East US is prohibited by subscription policy. Used permitted North Central US.
+  Registered Microsoft.Storage and Microsoft.Web for the approved deployment.
+- Created these dedicated resources:
+  - Group: `rg-pogoh-logger`
+  - Storage: `pogohlogger1426377395`, StorageV2, Standard_LRS, TLS 1.2,
+    HTTPS only, no public blob access.
+  - App: `pogoh-timer-1426377395`, Python 3.12 / Functions v4.
+  - Plan: `ASP-rgpogohlogger-b117`, verified **FC1 / FlexConsumption**,
+    **512 MB, maximum one instance, alwaysReady []**.
+  - Deployment blob container in that storage account.
+  No Application Insights or Log Analytics resources were created.
+- Deployment succeeded at 2026-10-29T04:42:33Z using Core Tools with an explicit
+  `--subscription` argument. Host reports Running and indexes `dispatch_logger`.
+  The schedule is `0 3-59/10 * * * *`, runOnStartup false, useMonitor true.
+- User created the dedicated token and saved it to the Function App setting
+  `GITHUB_TOKEN`. Verified only its nonempty presence; never print settings or
+  token values. Suggested token name POGOH Azure Timer and 90-day expiration
+  (January 27, 2027); actual selected expiry still needs confirmation.
+- Enabled timer by setting `AzureWebJobs.dispatch_logger.Disabled=false`.
+  Verified isDisabled false and synchronized triggers with ARM syncfunctiontriggers.
+- **Live cadence verification passed.** Two naturally scheduled workflow_dispatch
+  runs succeeded exactly ten minutes apart on October 29, 2026:
+  - 04:53:01 UTC: https://github.com/Venom2074/pogoh-logger/actions/runs/40820215183
+    CSV snapshot (including station 59): 04:53:07 UTC.
+  - 05:03:01 UTC: https://github.com/Venom2074/pogoh-logger/actions/runs/40821133949
+    CSV snapshot (including station 59): 05:03:08 UTC.
+  Azure's timer status also recorded Last 04:53:00 / Next 05:03:00 UTC.
+  The temporary read-only monitor (session 10304) has been stopped.
+- No durable invocation logs are configured. Azure's timer-monitor blob confirms
+  the 04:53 execution. Execution metrics were inconsistent/unavailable; use the
+  timer status blob plus successful GitHub runs and CSV rows as verification.
+  The handoff's HTTP-status invocation-log check is unavailable without
+  separately approved telemetry. End-to-end scheduling and data updates were
+  verified successfully; no extra monitoring resources were created.
+- Function source, tests, and setup documentation are maintained in this
+  repository under `azure/`. Deployment is live and verification passed. The
+  GitHub workflow owns snapshot commits; pull subsequent data updates with
+  git pull --ff-only.

@@ -1,0 +1,14 @@
+{
+  "version": "2.0",
+  "functionTimeout": "00:01:00",
+  "logging": {
+    "logLevel": {
+      "default": "Warning",
+      "Function.dispatch_logger": "Information"
+    }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[4.0.0, 5.0.0)"
+  }
+}

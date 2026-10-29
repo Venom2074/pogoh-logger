@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.tools/
+local.settings.json
+.env
+.env.*
+!.env.example
+.python_packages/
+azure/.azure/

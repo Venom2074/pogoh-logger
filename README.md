@@ -4,7 +4,8 @@ Snapshots live bike and dock availability for every POGOH station every ~10 minu
 
 ## How it works
 
-- `.github/workflows/log.yml` runs `log_status.py` on a GitHub Actions schedule (every 10 min, best-effort; GitHub sometimes delays or skips runs).
+- An Azure Function dispatches `.github/workflows/log.yml` every ten minutes.
+  The workflow's GitHub Actions schedule remains enabled as a best-effort fallback.
 - `log_status.py` reads POGOH's public GBFS v3 feed and appends one row per station to `data/YYYY-MM.csv` (UTC month).
 - `data/stations.csv` maps `station_id` to station name, coordinates and capacity.
 
@@ -27,6 +28,13 @@ Times are UTC; Pittsburgh is UTC-4 (EDT) until Nov 1, 2026, then UTC-5 (EST).
 ## Run it manually
 
 Actions tab → "Log POGOH station status" → Run workflow. Or locally: `python3 log_status.py`.
+
+## Azure timer
+
+The timer in [`azure/`](azure/README.md) is deployed on Flex Consumption with
+zero always-ready instances. See its README for resource names, deployment,
+token rotation, verification, credit controls, and stop/delete instructions.
+The Azure for Students spending limit remains enabled.
 
 ## Data source
 
