@@ -1,0 +1,84 @@
+name: Publish POGOH companion
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'companion/**'
+      - 'tools/**'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/pages.yml'
+  # Logger pushes use GITHUB_TOKEN, so they cannot trigger another push workflow.
+  # Rebuild after the first successful logger run in each hour instead.
+  workflow_run:
+    workflows: ['Log POGOH station status']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pogoh-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.repository == 'Venom2074/pogoh-logger' &&
+      (github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_repository.full_name == github.repository))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      publish: ${{ steps.cadence.outputs.publish }}
+    steps:
+      - name: Choose refresh cadence
+        id: cadence
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          LOGGER_STARTED: ${{ github.event.workflow_run.run_started_at }}
+        run: |
+          if [[ "$EVENT_NAME" != "workflow_run" || "${LOGGER_STARTED:14:1}" == "0" ]]; then
+            echo 'publish=true' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v7
+        if: steps.cadence.outputs.publish == 'true'
+        with:
+          # Always use trusted main, never workflow_run code or artifacts.
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        if: steps.cadence.outputs.publish == 'true'
+        with:
+          node-version: '24'
+      - name: Test, refresh summary, and package site
+        if: steps.cadence.outputs.publish == 'true'
+        run: |
+          npm test
+          npm run build
+          npm run build:routes
+          npm run package
+      - uses: actions/upload-pages-artifact@v5
+        if: steps.cadence.outputs.publish == 'true'
+        with:
+          path: .site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

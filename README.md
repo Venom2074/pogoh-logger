@@ -40,3 +40,19 @@ The Azure for Students spending limit remains enabled.
 
 Live data: POGOH GBFS feed, https://pittsburgh.publicbikesystem.net/customer/gbfs/v3.0/gbfs.json (CC-BY-4.0).
 Historical trip data (starts/ends, not bike counts): https://data.wprdc.org/dataset/pogoh-trip-data
+
+## Personal companion (local preview)
+
+The phone-friendly dashboard in [`companion/`](companion/README.md) adds live
+station status, observed availability charts, GPX tools, and a browser-local
+ride log. Run `node tools/serve-companion.mjs` and open
+<http://127.0.0.1:8765>. Node.js 22+ is required; no package installation is
+needed. Regenerate its dated fallback and charts with
+`node tools/build-companion.mjs` (local CSVs) or add `--remote` (latest public CSVs).
+
+Three starter rides now have map-reviewed tracks and GPX downloads, with route
+notes, estimated distance/time/climb, and nearby station counts. Field rides,
+publishing, and remaining navigation checks remain. Phone GPX import and Watch
+sync are user-reported working. Free permanent phone hosting is prepared; see
+[Pages publishing](companion/PUBLISHING.md), [`IMPLEMENTATION.md`](IMPLEMENTATION.md)
+and the [route review](companion/ROUTE_REVIEW.md).

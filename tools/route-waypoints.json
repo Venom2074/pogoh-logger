@@ -1,0 +1,36 @@
+[
+  {
+    "id": "schenley",
+    "profile": "trekking",
+    "waypoints": [
+      {"name":"Schenley Dr & Schenley Dr Ext · station 33","lat":40.442435,"lon":-79.951498},
+      {"name":"Schenley Park Overlook","lat":40.4305369,"lon":-79.9451178},
+      {"name":"Overlook Drive by the Oval","lat":40.4325049,"lon":-79.9413415},
+      {"name":"Overlook / Greenfield / Bartlett connection","lat":40.4327544,"lon":-79.9374770},
+      {"name":"Return to station 33","lat":40.442435,"lon":-79.951498}
+    ]
+  },
+  {
+    "id": "eliza",
+    "profile": "trekking",
+    "waypoints": [
+      {"name":"Eliza Furnace trailhead · station 2","lat":40.42583,"lon":-79.953476},
+      {"name":"Turnaround on Eliza Furnace Trail before the downtown street connection","lat":40.433999,"lon":-79.992183},
+      {"name":"Return to station 2","lat":40.42583,"lon":-79.953476}
+    ]
+  },
+  {
+    "id": "river-loop",
+    "profile": "trekking",
+    "waypoints": [
+      {"name":"Technology Dr & Bates St · station 49","lat":40.430455,"lon":-79.960123},
+      {"name":"Downtown end of Eliza Furnace Trail","lat":40.433999,"lon":-79.992183},
+      {"name":"Smithfield Street Bridge · north approach","lat":40.436277,"lon":-80.001063},
+      {"name":"Smithfield Street Bridge · south approach","lat":40.432143,"lon":-80.003692},
+      {"name":"South Side Trail · station 9","lat":40.431336,"lon":-79.995106},
+      {"name":"Hot Metal Bridge · south approach","lat":40.4271,"lon":-79.9632},
+      {"name":"Hot Metal Bridge · north approach","lat":40.4296,"lon":-79.9609},
+      {"name":"Return to station 49","lat":40.430455,"lon":-79.960123}
+    ]
+  }
+]

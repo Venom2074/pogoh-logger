@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173d32">
+  <meta name="description" content="A personal POGOH companion for bike availability, observed patterns, and everyday rides around Pittsburgh.">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="POGOH">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>POGOH companion · Pittsburgh, by bike</title>
+  <script src="vendor/leaflet.js" defer></script>
+  <script src="app.mjs" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#now" aria-label="POGOH companion home"><span class="brand-icon" aria-hidden="true">↗</span> POGOH<span class="brand-sub">companion</span></a>
+    <span class="location">PITTSBURGH, PA</span>
+  </header>
+  <div class="shell">
+    <aside class="rail">
+      <p class="rail-label">YOUR DAILY LOOP</p>
+      <nav aria-label="Main navigation">
+        <a href="#now" data-page="now" aria-current="page"><span aria-hidden="true">↗</span> Ride now</a>
+        <a href="#times" data-page="times"><span aria-hidden="true">▥</span> Best times</a>
+        <a href="#routes" data-page="routes"><span aria-hidden="true">⌁</span> Routes</a>
+        <a href="#log" data-page="log"><span aria-hidden="true">＋</span> Ride log</a>
+      </nav>
+      <div class="rail-note"><span class="dot"></span> A little more outside.<br>A little less screen time.</div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <noscript><p class="notice">JavaScript is required for station status and charts. Check current availability at <a href="https://pogoh.com/">POGOH</a>.</p></noscript>
+      <p id="fatal" class="notice" hidden></p>
+      <div id="app-update" class="update-notice" role="status" hidden><span>A new version is ready.</span><button id="apply-update" class="button outline">Update</button></div>
+      <section id="page-now" class="page" aria-labelledby="now-title">
+        <div class="page-heading"><div><p class="eyebrow">A GOOD DAY TO GET OUTSIDE</p><h1 id="now-title">Find your next ride.</h1><p class="lede">Start at TCS Hall. Find a bike. Make a little room for a ride.</p></div><button id="refresh" class="button outline">↻ Refresh status</button></div>
+        <div id="status-banner" class="status-banner" role="status">Loading the latest station counts…</div>
+        <div class="now-grid">
+          <article class="home-card"><div class="card-top"><span class="eyebrow">YOUR HOME STATION · 59</span><span class="pill">CMU</span></div><h2>Forbes Ave at<br>TCS Hall</h2><div id="home-counts" class="counts"><span>Loading…</span></div><p id="home-message" class="home-message"></p><a id="home-maps" class="button light" href="https://maps.apple.com/?ll=40.444784,-79.947571&amp;q=POGOH%20TCS%20Hall">Open station in Maps ↗</a><p id="home-reported" class="small"></p></article>
+          <article class="map-card"><div class="card-top"><h2>Around campus</h2><span class="small">Numbers = e-bikes</span></div><div id="station-map" class="map" aria-label="Map of nearby POGOH stations"></div><p id="map-note" class="small map-note">Tap a station for details. Maps require an internet connection.</p></article>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">A PLAN B, CLOSE BY</p><h2>Nearby alternatives</h2></div><label class="small">Sort by <select id="station-sort"><option value="distance">Distance from TCS Hall</option><option value="ebikes">E-bikes available</option></select></label></div>
+        <p class="small">Straight-line distances from TCS Hall.</p>
+        <div id="alternatives" class="station-grid"></div>
+        <div class="tip"><span aria-hidden="true">↗</span><p><strong>Leave a little buffer.</strong> Bikes and docks can change before you arrive. Use POGOH or PBSC to rent and confirm your return.</p><a href="https://pogoh.com/" target="_blank" rel="noopener">Open POGOH ↗</a></div>
+      </section>
+      <section id="page-times" class="page" hidden aria-labelledby="times-title">
+        <div class="page-heading"><div><p class="eyebrow">LEARN YOUR STATION'S RHYTHM</p><h1 id="times-title">A better time to ride.</h1><p class="lede">Observed availability, with the gaps left visible.</p></div></div>
+        <div id="coverage" class="coverage"></div>
+        <div class="panel chart-panel"><div class="section-heading"><h2>The weekly picture</h2><div class="filters"><label>Station <select id="history-station"></select></label><label>Look for <select id="history-kind"><option value="ebike">An e-bike</option><option value="any">Any bike</option></select></label></div></div>
+          <p class="small">Share of observed samples with at least one rentable bike. Pittsburgh local time.</p>
+          <div id="heatmap" class="heatmap-wrap" aria-label="Weekly availability heatmap"></div>
+          <div class="legend"><span class="legend-empty"></span> No data <span class="legend-thin"></span> Insufficient data <span class="legend-gradient"></span> 0% → 100%</div>
+          <p id="cell-detail" class="notice" role="status">Choose an hour to inspect its samples.</p>
+        </div>
+        <div class="panel chart-panel"><div class="section-heading"><h2>A day, hour by hour</h2><label>Day <select id="history-day"><option value="0">Monday</option><option value="1">Tuesday</option><option value="2">Wednesday</option><option value="3">Thursday</option><option value="4">Friday</option><option value="5">Saturday</option><option value="6">Sunday</option></select></label></div><div id="daily-chart"></div></div>
+        <div class="panel method"><h2>When to try</h2><p id="recommendation"></p><details><summary>How these charts work</summary><p>One sample per ten-minute UTC slot; each local date gets equal weight within an hour. Missing, invalid, and over-20-minute-old observations are excluded. Closed rental stations count as unavailable.</p><p>Highlighted hours need 3 distinct dates and 6 samples. The nearby group requires every member in the same snapshot. Repeated daylight-saving hours share a local date; skipped hours stay missing. Observations are not predictions or reservations.</p></details></div>
+      </section>
+      <section id="page-routes" class="page" hidden aria-labelledby="routes-title">
+        <div class="page-heading"><div><p class="eyebrow">TAKE THE LONG WAY HOME</p><h1 id="routes-title">A little room to roam.</h1><p class="lede">A park circuit, a trail out-and-back, and a longer river loop.</p></div><label class="button outline file-button">Import GPX<input id="gpx-import" type="file" accept=".gpx,application/gpx+xml"></label></div>
+        <p id="route-status" class="small" role="status">Choose a ride to see its map and send it to EasyRoute.</p>
+        <div id="route-library" class="route-grid"></div>
+        <div class="panel" id="route-detail" hidden></div>
+        <section class="panel navigation-guide" id="navigation-guide" aria-labelledby="navigation-guide-title"><h2 id="navigation-guide-title">From phone to wrist.</h2><p>Choose a route to see its free navigation options and device-check guide.</p></section>
+        <div class="tip"><span aria-hidden="true">◷</span><p><strong>CMU rides: 30 minutes.</strong> Allow time to dock. A new rental needs an available bike. <a href="https://www.cmu.edu/transportation/wheels/pogoh.html" target="_blank" rel="noopener">Membership terms ↗</a></p></div>
+      </section>
+      <section id="page-log" class="page" hidden aria-labelledby="log-title">
+        <div class="page-heading"><div><p class="eyebrow">SMALL RIDES ADD UP</p><h1 id="log-title">Make it a habit.</h1><p class="lede">A little riding, every week.</p></div></div>
+        <p id="storage-note" class="notice" role="status"></p>
+        <div id="ride-stats" class="coverage"></div>
+        <div class="log-grid"><form id="ride-form" class="panel"><h2>Add a ride</h2><label>Date<input type="date" id="ride-date" required></label><label>Route<input id="ride-route" list="route-options" maxlength="120" placeholder="An afternoon around Schenley" required></label><datalist id="route-options"><option>Schenley ride</option><option>Eliza Furnace out-and-back</option><option>River loop</option></datalist><div class="form-row"><label>Bike<select id="ride-bike"><option>E-bike</option><option>Pedal bike</option></select></label><label>Minutes<input id="ride-minutes" type="number" min="1" max="1440" required></label></div><label>Notes<textarea id="ride-notes" maxlength="2000" rows="3" placeholder="How did it feel?"></textarea></label><button class="button primary" type="submit">Save ride ＋</button></form>
+        <div class="panel"><div class="section-heading"><h2>Your rides</h2><div class="actions"><button id="export-rides" class="button outline">Back up</button><label class="button outline file-button">Import backup<input id="import-rides" type="file" accept=".json,application/json"></label></div></div><div id="ride-list"></div></div></div>
+      </section>
+      <footer><span>POGOH companion <span class="muted">/ A personal project</span></span><span><a href="https://pittsburgh.publicbikesystem.net/customer/gbfs/v3.0/gbfs.json">POGOH GBFS · CC BY 4.0</a> · <a href="https://github.com/Venom2074/pogoh-logger">Source</a></span><details><summary>Add to Home Screen & offline use</summary><p>On the published site: Safari → Share → Add to Home Screen.</p><p>Previously loaded routes and dated counts work offline. Live counts, street maps, and navigation need internet. Rides and imports stay in this browser; back up before clearing site data or switching to the published site.</p></details></footer>
+    </main>
+  </div>
+</body>
+</html>

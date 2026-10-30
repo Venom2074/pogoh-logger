@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="POGOH test fixture" xmlns="http://www.topografix.com/GPX/1/1">
+  <trk><name>UI test only — not a bike route</name><trkseg>
+    <trkpt lat="40.444784" lon="-79.947571"/>
+    <trkpt lat="40.4450" lon="-79.9480"/>
+    <trkpt lat="40.4451" lon="-79.9482"/>
+  </trkseg></trk>
+</gpx>

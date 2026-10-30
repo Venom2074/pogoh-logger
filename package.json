@@ -1,0 +1,15 @@
+{
+  "name": "pogoh-companion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-companion.mjs",
+    "build:remote": "node tools/build-companion.mjs --remote",
+    "build:routes": "node tools/build-route-files.mjs",
+    "package": "node tools/package-companion.mjs",
+    "preview": "node tools/serve-companion.mjs",
+    "preview:phone": "node tools/serve-companion.mjs --phone",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {"node": ">=22"}
+}
