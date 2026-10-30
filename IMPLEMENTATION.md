@@ -10,11 +10,11 @@ phase 7 needs several weeks of observations rather than just implementation time
 | Phase | Local implementation | Still needed |
 | --- | --- | --- |
 | 1: validate | Ten-minute Actions cadence confirmed; data summary, user defaults, phone layout, CMU terms, Watch research; starter map paths reviewed | Campus walking/riding connections, field checks, device behavior |
-| 2: current view | Live GBFS, home/backup cards, interactive map, refresh, dated fallback, mobile layout | Hosted iPhone verification; hosting approval |
+| 2: current view | Live GBFS, home/backup cards, interactive map, refresh, dated fallback, mobile layout | Physical iPhone verification; Pages published and hosted browser checks passed |
 | 3: routes | Three map-reviewed starter tracks, directional maps, distance/time/climb, station proximity/counts, GPX downloads, access audits and source evidence | Field rides, campus connections, station access detours |
-| 4: patterns | Repeatable builder, weekly heatmap/daily graph, separate e-bike/any-bike views, station/group analysis, DST and coverage rules | More repeated weekday coverage; prepared hourly Pages rebuild needs publishing approval |
+| 4: patterns | Repeatable builder, weekly heatmap/daily graph, separate e-bike/any-bike views, station/group analysis, DST and coverage rules | More repeated weekday coverage; hourly Pages rebuild active |
 | 5: Watch | Navigation handoff, free EasyRoute guide, local device-check records, LAN/Tailscale preview; user reports phone import and Watch sync working | Exact-track comparison, turns/taps, locked-phone behavior, and offline operation are not individually confirmed |
-| 6: ride log/usability | Local rides, JSON portability, weekly totals, offline shell, manifest, accessibility states, maintenance docs | Hosted iPhone installation/offline checks; publishing approval |
+| 6: ride log/usability | Local rides, JSON portability, weekly totals, offline shell, manifest, accessibility states, maintenance docs | Physical iPhone installation/offline checks |
 | 7: later improvements | Intentionally deferred | Consistent data, held-out evaluation, demonstrated need |
 
 See `companion/README.md` for commands, data rules, publishing proposal, and
@@ -144,3 +144,17 @@ workflow is authorized. No new paid service, account, Azure resource, or token
 change is needed. Latest existing logger commits were incorporated by fast-forward;
 no local logger/raw data edits. Summary refreshed to 18:43:08 UTC, 287 snapshots,
 280 ten-minute slots, 143/144 recent coverage. Deployment verification follows.
+
+
+## Pages deployed and verified — October 30, 2026
+
+Published at https://venom2074.github.io/pogoh-logger/ with HTTPS enforced.
+Publication commit `3f492fa`; Actions run 41109930891 succeeded (build and deploy),
+including all 41 tests. The root plus 22 runtime assets returned HTTP 200; GPX
+MIME types and content, summary freshness, manifest, and icons were checked.
+The live hosted browser fetched current GBFS counts. At 390px, the route library
+and selected ride have no horizontal overflow; downloads and Maps destination/
+travel-mode links are correct. Browser error log was empty. No laptop server
+is needed. The homepage can be added to the iPhone Home Screen; physical Safari
+installation, native sharing, and remaining Watch checks remain user-device QA.
+No Azure resources, tokens, logger code/workflow, or raw data were edited.

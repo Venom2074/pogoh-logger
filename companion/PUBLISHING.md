@@ -2,12 +2,12 @@
 
 Use GitHub Pages on the existing public repository. It serves the static site
 over HTTPS without the laptop, a local server, Tailscale, Azure changes, a new
-account, or paid hosting. Expected URL after deployment:
+account, or paid hosting. Live URL:
 
 https://venom2074.github.io/pogoh-logger/
 
-GitHub Pages was disabled in the read-only check on October 30, 2026. The URL
-is a proposal until deployment is verified. The site will be public. Rides,
+GitHub Pages was enabled with approval and deployed successfully on October 30,
+2026, with HTTPS enforced. The site is public. Rides,
 imported tracks, and device-check records stay in browser storage and are not
 included in the deployment.
 
@@ -74,3 +74,16 @@ shell version offers an Update button; save any unfinished form first. Physical
 iPhone installation and offline behavior still need testing on the hosted URL.
 
 Official reference: [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+
+## Deployment verification — October 30, 2026
+
+Initial publication commit: `3f492fa`. [Build and deployment succeeded](https://github.com/Venom2074/pogoh-logger/actions/runs/41109930891).
+All 41 tests passed in CI. The site root and 22 runtime assets returned HTTPS
+200; all three GPX files used `application/gpx+xml`. The hosted summary contains
+287 snapshots through 18:43:08 UTC, with 143/144 recent ten-minute slots covered.
+The hosted browser fetched live GBFS successfully. At 390px the route library
+and selected ride fit without page overflow; GPX and walking/cycling links
+resolve correctly below the project subdirectory. Browser error log was empty.
+Physical iPhone installation, native sharing, and remaining Watch behavior
+still need device checks; the desktop browser checks do not establish those.

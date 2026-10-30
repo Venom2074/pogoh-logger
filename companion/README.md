@@ -32,7 +32,7 @@ node tools/build-companion.mjs --remote
 The builder discovers **all** monthly CSVs and writes
 `companion/data/summary.json`, including provenance and build time. Review and
 commit that generated file alongside any app publication. A separate Pages
-workflow is prepared locally, pending hosting approval. It rebuilds on app
+workflow is active. It rebuilds on app
 changes and after successful logger runs started in minutes 00–09 of each hour.
 Charts stay dated; live station counts refresh independently. In a restricted Codex sandbox, remote reads and
 the localhost server/check may need network approval.
@@ -89,27 +89,19 @@ node --test tests/*.test.mjs
   failure falls back to memory with an export warning. An invalid stored ride
   array is preserved rather than overwritten. The log never syncs automatically.
 
-## Publishing proposal — approval still required
+## Published phone site
 
-Use the existing public repository's GitHub Pages with an independently
-dispatched Pages workflow, serving only `companion/`. That avoids deploying
-Azure source or raw monthly CSVs as website files and keeps snapshot logging
-independent. Before enabling anything:
+Open [POGOH companion](https://venom2074.github.io/pogoh-logger/) on the iPhone;
+in Safari choose Share → Add to Home Screen. The laptop and Tailscale are not
+needed. GitHub Pages is enabled with approval, and the independent deployment
+workflow has passed. The site is public; rides and imported tracks stay local.
 
-1. Review the map-checked starter routes and finish the device tests below.
-2. Review the local app and generated summary, then approve pushing the app and
-   changing Pages settings/adding the deployment workflow.
-3. Publish the folder as a Pages artifact; regenerate its summary before each
-   deployment. The deployed site will be public. Personal ride records and
-   imported routes remain browser-local, outside the repository and artifact.
-4. Verify the actual HTTPS URL on the iPhone, live-feed CORS, path-relative
-   assets, service-worker scope, downloads, and the Maps handoff.
-
-The publishing workflow is prepared at `.github/workflows/pages.yml`; it has
-not been pushed or enabled. GitHub Pages configuration/publication still needs
-approval. See [publishing](PUBLISHING.md). Do not
-add a paid proxy if the public feed stops allowing browser access; show dated
-snapshots and investigate first.
+The workflow publishes the explicit `.site/` runtime package, refreshes the
+summary on app changes and about hourly after qualifying logger runs, and
+leaves the logger/Azure setup unchanged. Live counts refresh independently.
+See [publishing and verification](PUBLISHING.md) for maintenance. Do not add a
+paid proxy if the public feed stops allowing browser access; show dated counts
+and investigate first.
 
 ## Offline and installation
 
@@ -184,6 +176,6 @@ Foundation, live data/fallback, analysis engine/charts, local ride log, GPX tool
 offline shell, a map-reviewed starter route library, free navigation handoff,
 compact everyday screens, PNG home-screen icons, and an optional update control
 are implemented. Phone import/Watch sync are user-reported working. Field rides,
-remaining navigation checks, hosted iPhone installation, and publishing remain.
-Automatic data regeneration is prepared locally with the publishing workflow. Phase 7 deliberately waits for several
+remaining navigation checks, physical iPhone installation and remaining navigation checks remain.
+Pages publication and automatic summary regeneration are active. Phase 7 deliberately waits for several
 weeks of consistent data. This is not completion of every plan phase.
