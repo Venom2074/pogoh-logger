@@ -159,5 +159,99 @@
         "lon": -80.009073
       }
     ]
+  },
+  {
+    "id": "junction-hollow",
+    "profile": "trekking",
+    "waypoints": [
+      {
+        "name": "Eliza Furnace trailhead · station 2",
+        "lat": 40.42583,
+        "lon": -79.953476
+      },
+      {
+        "name": "Turnaround on Junction Hollow Trail before Boundary Street",
+        "lat": 40.436686,
+        "lon": -79.950007
+      },
+      {
+        "name": "Return to station 2",
+        "lat": 40.42583,
+        "lon": -79.953476
+      }
+    ]
+  },
+  {
+    "id": "stadium-trail",
+    "profile": "trekking",
+    "waypoints": [
+      {
+        "name": "North Shore Trail · station 23",
+        "lat": 40.445751,
+        "lon": -80.009073
+      },
+      {
+        "name": "Turnaround on North Shore Trail by the science center",
+        "lat": 40.446098,
+        "lon": -80.020486
+      },
+      {
+        "name": "Return to station 23",
+        "lat": 40.445751,
+        "lon": -80.009073
+      }
+    ]
+  },
+  {
+    "id": "hot-metal-gap",
+    "profile": "trekking",
+    "waypoints": [
+      {
+        "name": "Technology Dr & Bates St · station 49",
+        "lat": 40.430455,
+        "lon": -79.960123
+      },
+      {
+        "name": "Hot Metal bicycle bridge south approach",
+        "lat": 40.427764,
+        "lon": -79.96175
+      },
+      {
+        "name": "Turnaround on the GAP toward Hays",
+        "lat": 40.41601,
+        "lon": -79.95459
+      },
+      {
+        "name": "Hot Metal bicycle bridge south approach",
+        "lat": 40.427764,
+        "lon": -79.96175
+      },
+      {
+        "name": "Return to station 49",
+        "lat": 40.430455,
+        "lon": -79.960123
+      }
+    ]
+  },
+  {
+    "id": "hazelwood-green",
+    "profile": "trekking",
+    "waypoints": [
+      {
+        "name": "Eliza Furnace trailhead · station 2",
+        "lat": 40.42583,
+        "lon": -79.953476
+      },
+      {
+        "name": "Turnaround on Hazelwood Trail before the street crossing",
+        "lat": 40.417638,
+        "lon": -79.950727
+      },
+      {
+        "name": "Return to station 2",
+        "lat": 40.42583,
+        "lon": -79.953476
+      }
+    ]
   }
 ]

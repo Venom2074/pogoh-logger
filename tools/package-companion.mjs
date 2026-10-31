@@ -8,6 +8,7 @@ export const PUBLIC_FILES=Object.freeze([
   'navigation-ui.mjs','updates.mjs','library.mjs','sw.js','routes.json','data/summary.json',
   'routes/schenley.gpx','routes/eliza.gpx','routes/river-loop.gpx',
   'routes/eliza-quick.gpx','routes/south-side.gpx','routes/north-shore.gpx',
+  'routes/junction-hollow.gpx','routes/stadium-trail.gpx','routes/hot-metal-gap.gpx','routes/hazelwood-green.gpx',
   'icon.svg','icons/apple-touch-icon.png','icons/icon-192.png','icons/icon-512.png',
   'manifest.webmanifest','vendor/leaflet.js','vendor/leaflet.css','vendor/LICENSE',
 ]);

@@ -11,7 +11,7 @@ phase 7 needs several weeks of observations rather than just implementation time
 | --- | --- | --- |
 | 1: validate | Ten-minute Actions cadence confirmed; data summary, user defaults, phone layout, CMU terms, Watch research; starter map paths reviewed | Campus walking/riding connections, field checks, device behavior |
 | 2: current view | Live GBFS, home/backup cards, interactive map, refresh, dated fallback, mobile layout | Physical iPhone verification; Pages published and hosted browser checks passed |
-| 3: routes | Three map-reviewed starter tracks, directional maps, distance/time/climb, station proximity/counts, GPX downloads, access audits and source evidence | Field rides, campus connections, station access detours |
+| 3: routes | Ten map-reviewed tracks, categories/favorites, directional maps, distance/time/climb, station proximity/counts, GPX downloads, access audits and source evidence | Field rides, campus connections, station access detours |
 | 4: patterns | Repeatable builder, weekly heatmap/daily graph, separate e-bike/any-bike views, station/group analysis, DST and coverage rules | More repeated weekday coverage; hourly Pages rebuild active |
 | 5: Watch | Navigation handoff, free EasyRoute guide, local device-check records, LAN/Tailscale preview; user reports phone import and Watch sync working | Exact-track comparison, turns/taps, locked-phone behavior, and offline operation are not individually confirmed |
 | 6: ride log/usability | Local rides, JSON portability, weekly totals, offline shell, manifest, accessibility states, maintenance docs | Physical iPhone installation/offline checks |
@@ -193,3 +193,26 @@ Update button activated v6 successfully and browser error log was empty.
 The six-route local library also reloaded from cache after stopping the owned
 preview server (public internet remained connected). No user-owned preview was
 stopped, no personal records were cleared, and no Azure/GitHub settings changed.
+
+
+## Ten-route library — October 31, 2026
+
+Added Junction Hollow greenway (3.6 km), North Shore stadium trail (2.0 km),
+Hot Metal & GAP (4.8 km), and Hazelwood Trail (4.8 km), bringing the built-in
+library to ten. Final geometry was individually map-reviewed and access audited;
+incorrect first-waypoint candidates and one-way/access issues were excluded.
+New bridge-route metadata replaces an unreliable low numeric climb with a
+Bridge ramps label. All routes remain map-only and exclude campus access.
+See companion/ROUTE_REVIEW.md for sources, restrictions, and review evidence.
+
+Generated ten GPX files. Cache v7 and the 30-asset package include all ten;
+the artifact test now checks every library route is in both the publication
+allowlist and offline cache. All 54 tests pass. Favorites/categories retain the
+existing behavior. No logger code/workflow, Azure resources, GitHub settings,
+tokens, paid services, or raw data were edited.
+
+Development remaining: physical route and station-access checks; iPhone home-
+screen/offline checks; individual Watch track/turn/haptic/locked-phone checks;
+and timing recommendations after enough repeated weekday coverage. Phase 7
+modeling needs several weeks and held-out evaluation. Weather, automatic sync,
+and native phone/Watch apps remain optional extensions based on actual use.

@@ -13,6 +13,12 @@ test('deployment artifact includes every cached asset and only the public allowl
   const sw=await readFile(new URL('../companion/sw.js',import.meta.url),'utf8');
   const shell=sw.match(/const SHELL = \[([^\]]+)\]/)[1].match(/'([^']+)'/g).map(x => x.slice(1,-1));
   for(const asset of shell) assert.ok(asset === './' || PUBLIC_FILES.includes(asset),`Missing cached asset: ${asset}`);
+  const routes=JSON.parse(await readFile(new URL('../companion/routes.json',import.meta.url),'utf8'));
+  for(const route of routes) {
+    const asset=`routes/${route.id}.gpx`;
+    assert.ok(PUBLIC_FILES.includes(asset),`Route missing from deployment: ${asset}`);
+    assert.ok(shell.includes(asset),`Route missing from offline cache: ${asset}`);
+  }
   for(const asset of PUBLIC_FILES) assert.ok((await readFile(`${destination}/${asset}`)).length > 0);
 });
 

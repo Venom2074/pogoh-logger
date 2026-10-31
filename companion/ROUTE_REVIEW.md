@@ -147,3 +147,57 @@ check, not a live closure guarantee. All three rides exclude travel from CMU,
 remain map-only reviews, and have not been field ridden or Watch-tested.
 Reviews are bound to geometry/elevation hashes; GPX files were regenerated only
 after visual review and the geometry/access checks passed.
+
+
+## Expansion to ten rides — October 31, 2026
+
+| Ride | Station | Distance | Moving estimate | Climbing note |
+| --- | --- | --- | --- | --- |
+| Junction Hollow greenway | 2 | 3.6 km | 12–18 min | modeled 24 m |
+| North Shore stadium trail | 23 | 2.0 km | 7–10 min | modeled 3 m |
+| Hot Metal & GAP ride | 49 | 4.8 km | 16–24 min | bridge ramps; terrain model unreliable |
+| Hazelwood Trail out-and-back | 2 | 4.8 km | 16–24 min | modeled 14 m |
+
+All four lines were visually reviewed over OpenStreetMap, with start/finish,
+turnarounds, trail joins, ramps, and riverbank continuity inspected. Access audits
+show no steps, bicycle prohibition, private-access flag, or reverse one-way
+restriction in the final candidates. All report zero on-street distance under
+the audit's highway classification. Hot Metal has 66 m of conservatively treated
+walking access at the dock, disclosed in the UI. Other final audits report zero
+walking distance. These tag-based checks do not replace signs or field rides.
+
+Junction Hollow follows the paved trail to a turnaround before Boundary Street.
+An initial point on the wrong side of the railway required a long street detour
+and was rejected. The final route does not use informal railway crossings to
+Panther Hollow Lake. The [City's cycling-corridor description](https://engage.pittsburghpa.gov/oakland/strategy-safe-multimodal-connection-fifth-avenue-junction-hollow-trail)
+and [park entrance map](https://pittsburghparks.org/wp-content/uploads/2020/10/Schenley-Entrances.pdf)
+were consulted alongside the route access tags.
+
+The stadium ride heads west from station 23 on the waterfront past Acrisure
+Stadium to the science-center trail. Its initial endpoint led to a pedestrian
+spur with unclear bike access; the final turnaround is on the bicycle-permitted
+trail. It stays before the Chateau repair area. Crowds and event closures still
+require caution; it is not a guaranteed unobstructed promenade.
+
+Hot Metal & GAP uses the bicycle bridge and the GAP on the west/south bank,
+returning from the plotted trail point toward Hays. Early misplaced points
+produced street detours and a wrong-bank destination; these were rejected.
+The final turnaround was located on the mapped GAP and the final bridge and
+trail connection were inspected. It does not approach the Duquesne–Homestead
+closure listed by the [GAP operator](https://gaptrail.org/updates/). The UI shows
+Bridge ramps rather than the terrain model's low numeric ascent estimate,
+which is not a reliable representation of the bridge deck and approaches.
+
+Hazelwood follows the marked north-bank trail through the fine-gravel connector,
+turning before the Hazelwood Green street crossing. The first farther endpoint
+introduced one-way bike-lane problems and was rejected. The final route avoids
+those lanes. [Hazelwood Green's access guidance](https://hazelwoodgreen.com/visit-us/)
+confirms trail connections and asks visitors to stay in public areas and follow
+construction signs. Fine gravel, construction activity, and docking time are
+explicitly disclosed. The route does not promise access through work zones.
+
+The [riverfront operator's alerts](https://friendsoftheriverfront.org/) were
+checked for the Chateau and Convention Center restrictions; these four tracks
+do not enter those sections. Source checks are dated, not live closure reports.
+All ten rides exclude campus-to-start travel, retain their source/license and
+review hash in the dataset, and remain not field ridden.

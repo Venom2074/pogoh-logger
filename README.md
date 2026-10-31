@@ -53,7 +53,7 @@ ride log. Run `node tools/serve-companion.mjs` and open
 needed. Regenerate its dated fallback and charts with
 `node tools/build-companion.mjs` (local CSVs) or add `--remote` (latest public CSVs).
 
-Six rides have map-reviewed tracks and GPX downloads, category filters, and
+Ten rides have map-reviewed tracks and GPX downloads, category filters, and
 browser-local favorites. Route notes include distance/time/climb and nearby
 station counts. Field rides and remaining navigation checks remain. Phone GPX import and Watch
 sync are user-reported working. Free permanent phone hosting is live; see
