@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="POGOH companion" xmlns="http://www.topografix.com/GPX/1/1">
+<metadata><name>Eliza quick spin</name><copyright author="OpenStreetMap contributors"><license>https://opendatacommons.org/licenses/odbl/1-0/</license></copyright><link href="https://brouter.de/brouter?lonlats=-79.953476%2C40.42583%7C-79.968876%2C40.4355%7C-79.953476%2C40.42583&amp;profile=trekking&amp;alternativeidx=0&amp;format=geojson"><text>Route source</text></link></metadata>
+<trk><name>Eliza quick spin</name><desc>Route geometry, not turn instructions. Check current access and conditions.</desc><trkseg>
+<trkpt lat="40.425851" lon="-79.953456"><ele>226.5</ele></trkpt>
+<trkpt lat="40.425863" lon="-79.953476"><ele>226.75</ele></trkpt>
+<trkpt lat="40.425941" lon="-79.953536"><ele>227.25</ele></trkpt>
+<trkpt lat="40.426084" lon="-79.95366"><ele>228</ele></trkpt>
+<trkpt lat="40.426394" lon="-79.953939"><ele>229.5</ele></trkpt>
+<trkpt lat="40.427557" lon="-79.95505"><ele>232.5</ele></trkpt>
+<trkpt lat="40.427977" lon="-79.955507"><ele>233.25</ele></trkpt>
+<trkpt lat="40.42956" lon="-79.957133"><ele>231</ele></trkpt>
+<trkpt lat="40.429787" lon="-79.957335"><ele>230.75</ele></trkpt>
+<trkpt lat="40.430404" lon="-79.957966"><ele>229.75</ele></trkpt>
+<trkpt lat="40.430712" lon="-79.95833"><ele>226.5</ele></trkpt>
+<trkpt lat="40.431236" lon="-79.95886"><ele>227.5</ele></trkpt>
+<trkpt lat="40.431294" lon="-79.958942"><ele>227.25</ele></trkpt>
+<trkpt lat="40.431475" lon="-79.959218"><ele>227.25</ele></trkpt>
+<trkpt lat="40.431558" lon="-79.959349"><ele>227.25</ele></trkpt>
+<trkpt lat="40.431796" lon="-79.95978"><ele>229</ele></trkpt>
+<trkpt lat="40.432297" lon="-79.960823"><ele>237.75</ele></trkpt>
+<trkpt lat="40.432909" lon="-79.962167"><ele>235.25</ele></trkpt>
+<trkpt lat="40.433003" lon="-79.962392"><ele>233.75</ele></trkpt>
+<trkpt lat="40.434506" lon="-79.965866"><ele>230.75</ele></trkpt>
+<trkpt lat="40.434904" lon="-79.966813"><ele>228.75</ele></trkpt>
+<trkpt lat="40.435032" lon="-79.967181"><ele>228.75</ele></trkpt>
+<trkpt lat="40.435229" lon="-79.967835"><ele>232.25</ele></trkpt>
+<trkpt lat="40.4355" lon="-79.968876"><ele>233.75</ele></trkpt>
+<trkpt lat="40.435229" lon="-79.967835"><ele>232.25</ele></trkpt>
+<trkpt lat="40.435032" lon="-79.967181"><ele>228.75</ele></trkpt>
+<trkpt lat="40.434904" lon="-79.966813"><ele>228.75</ele></trkpt>
+<trkpt lat="40.434506" lon="-79.965866"><ele>230.75</ele></trkpt>
+<trkpt lat="40.433003" lon="-79.962392"><ele>233.75</ele></trkpt>
+<trkpt lat="40.432909" lon="-79.962167"><ele>235.25</ele></trkpt>
+<trkpt lat="40.432297" lon="-79.960823"><ele>237.75</ele></trkpt>
+<trkpt lat="40.431796" lon="-79.95978"><ele>229</ele></trkpt>
+<trkpt lat="40.431558" lon="-79.959349"><ele>227.25</ele></trkpt>
+<trkpt lat="40.431475" lon="-79.959218"><ele>227.25</ele></trkpt>
+<trkpt lat="40.431294" lon="-79.958942"><ele>227.25</ele></trkpt>
+<trkpt lat="40.431236" lon="-79.95886"><ele>227.5</ele></trkpt>
+<trkpt lat="40.430712" lon="-79.95833"><ele>226.5</ele></trkpt>
+<trkpt lat="40.430404" lon="-79.957966"><ele>229.75</ele></trkpt>
+<trkpt lat="40.429787" lon="-79.957335"><ele>230.75</ele></trkpt>
+<trkpt lat="40.42956" lon="-79.957133"><ele>231</ele></trkpt>
+<trkpt lat="40.427977" lon="-79.955507"><ele>233.25</ele></trkpt>
+<trkpt lat="40.427557" lon="-79.95505"><ele>232.5</ele></trkpt>
+<trkpt lat="40.426394" lon="-79.953939"><ele>229.5</ele></trkpt>
+<trkpt lat="40.426084" lon="-79.95366"><ele>228</ele></trkpt>
+<trkpt lat="40.425941" lon="-79.953536"><ele>227.25</ele></trkpt>
+<trkpt lat="40.425863" lon="-79.953476"><ele>226.75</ele></trkpt>
+<trkpt lat="40.425851" lon="-79.953456"><ele>226.5</ele></trkpt>
+</trkseg></trk>
+</gpx>

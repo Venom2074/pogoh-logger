@@ -1317,7 +1317,11 @@
         "Street connectors, conservative walking sections, and rental-time limits disclosed"
       ],
       "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
-    }
+    },
+    "categories": [
+      "quick",
+      "parks"
+    ]
   },
   {
     "id": "eliza",
@@ -1979,7 +1983,10 @@
         "Street connectors, conservative walking sections, and rental-time limits disclosed"
       ],
       "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
-    }
+    },
+    "categories": [
+      "trails"
+    ]
   },
   {
     "id": "river-loop",
@@ -3937,6 +3944,1725 @@
       "date": "2026-10-30",
       "fieldRidden": false,
       "geometryHash": "38b2ffa486ec1e7e31699a3491a5f5bfd79890e8cbe410b2118055425a42549f",
+      "checks": [
+        "Visual comparison with street/trail map and official park/trail references",
+        "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",
+        "Routing access/one-way tags inspected; no flagged steps, bicycle prohibition, or reverse one-way",
+        "Street connectors, conservative walking sections, and rental-time limits disclosed"
+      ],
+      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
+    },
+    "categories": [
+      "trails",
+      "longer"
+    ]
+  },
+  {
+    "id": "eliza-quick",
+    "name": "Eliza quick spin",
+    "description": "A shorter Eliza Furnace out-and-back for an easy weekday ride.",
+    "terrain": "Mostly paved shared trail with a gentle grade. The approach from CMU is separate.",
+    "quickNote": "Short paved trail ride. Leave time to dock.",
+    "cautions": [
+      "Stay on the shared trail and yield to people walking.",
+      "Turn at the plotted point; this shorter ride does not reach downtown.",
+      "Campus travel is excluded. Start and finish at station 2."
+    ],
+    "overview": [
+      "Start at station 2 by the Swinburne trailhead.",
+      "Follow Eliza Furnace Trail west to the plotted turnaround.",
+      "Retrace the trail and return to station 2."
+    ],
+    "kind": "river",
+    "symbol": "⌁",
+    "status": "map-reviewed",
+    "categories": [
+      "quick",
+      "trails"
+    ],
+    "startStationId": "2",
+    "stationIds": [
+      "2"
+    ],
+    "destination": {
+      "name": "Station 2 · route start",
+      "lat": 40.42583,
+      "lon": -79.953476
+    },
+    "bikeAdvice": "Either bike suits the mostly flat trail. Choose an e-bike if you want help reaching the start.",
+    "rentalNote": "Moving time excludes stops and travel to the start. Leave time for an available dock; this estimate is not a rental allowance.",
+    "sources": [
+      {
+        "label": "Three Rivers Heritage Trail map",
+        "url": "https://friendsoftheriverfront.org/wp-content/uploads/2024/07/2024-Map-and-Guide_web_01-1.pdf"
+      },
+      {
+        "label": "Current trail alerts",
+        "url": "https://friendsoftheriverfront.org/"
+      }
+    ],
+    "points": [
+      [
+        40.425851,
+        -79.953456
+      ],
+      [
+        40.425863,
+        -79.953476
+      ],
+      [
+        40.425941,
+        -79.953536
+      ],
+      [
+        40.426084,
+        -79.95366
+      ],
+      [
+        40.426394,
+        -79.953939
+      ],
+      [
+        40.427557,
+        -79.95505
+      ],
+      [
+        40.427977,
+        -79.955507
+      ],
+      [
+        40.42956,
+        -79.957133
+      ],
+      [
+        40.429787,
+        -79.957335
+      ],
+      [
+        40.430404,
+        -79.957966
+      ],
+      [
+        40.430712,
+        -79.95833
+      ],
+      [
+        40.431236,
+        -79.95886
+      ],
+      [
+        40.431294,
+        -79.958942
+      ],
+      [
+        40.431475,
+        -79.959218
+      ],
+      [
+        40.431558,
+        -79.959349
+      ],
+      [
+        40.431796,
+        -79.95978
+      ],
+      [
+        40.432297,
+        -79.960823
+      ],
+      [
+        40.432909,
+        -79.962167
+      ],
+      [
+        40.433003,
+        -79.962392
+      ],
+      [
+        40.434506,
+        -79.965866
+      ],
+      [
+        40.434904,
+        -79.966813
+      ],
+      [
+        40.435032,
+        -79.967181
+      ],
+      [
+        40.435229,
+        -79.967835
+      ],
+      [
+        40.4355,
+        -79.968876
+      ],
+      [
+        40.435229,
+        -79.967835
+      ],
+      [
+        40.435032,
+        -79.967181
+      ],
+      [
+        40.434904,
+        -79.966813
+      ],
+      [
+        40.434506,
+        -79.965866
+      ],
+      [
+        40.433003,
+        -79.962392
+      ],
+      [
+        40.432909,
+        -79.962167
+      ],
+      [
+        40.432297,
+        -79.960823
+      ],
+      [
+        40.431796,
+        -79.95978
+      ],
+      [
+        40.431558,
+        -79.959349
+      ],
+      [
+        40.431475,
+        -79.959218
+      ],
+      [
+        40.431294,
+        -79.958942
+      ],
+      [
+        40.431236,
+        -79.95886
+      ],
+      [
+        40.430712,
+        -79.95833
+      ],
+      [
+        40.430404,
+        -79.957966
+      ],
+      [
+        40.429787,
+        -79.957335
+      ],
+      [
+        40.42956,
+        -79.957133
+      ],
+      [
+        40.427977,
+        -79.955507
+      ],
+      [
+        40.427557,
+        -79.95505
+      ],
+      [
+        40.426394,
+        -79.953939
+      ],
+      [
+        40.426084,
+        -79.95366
+      ],
+      [
+        40.425941,
+        -79.953536
+      ],
+      [
+        40.425863,
+        -79.953476
+      ],
+      [
+        40.425851,
+        -79.953456
+      ]
+    ],
+    "elevations": [
+      226.5,
+      226.75,
+      227.25,
+      228,
+      229.5,
+      232.5,
+      233.25,
+      231,
+      230.75,
+      229.75,
+      226.5,
+      227.5,
+      227.25,
+      227.25,
+      227.25,
+      229,
+      237.75,
+      235.25,
+      233.75,
+      230.75,
+      228.75,
+      228.75,
+      232.25,
+      233.75,
+      232.25,
+      228.75,
+      228.75,
+      230.75,
+      233.75,
+      235.25,
+      237.75,
+      229,
+      227.25,
+      227.25,
+      227.25,
+      227.5,
+      226.5,
+      229.75,
+      230.75,
+      231,
+      233.25,
+      232.5,
+      229.5,
+      228,
+      227.25,
+      226.75,
+      226.5
+    ],
+    "ascentMeters": 11,
+    "checkpoints": [
+      {
+        "name": "Station 2 · route start",
+        "lat": 40.42583,
+        "lon": -79.953476
+      },
+      {
+        "name": "Turnaround on Eliza Furnace Trail",
+        "lat": 40.4355,
+        "lon": -79.968876
+      },
+      {
+        "name": "Return to station 2",
+        "lat": 40.42583,
+        "lon": -79.953476
+      }
+    ],
+    "source": {
+      "provider": "BRouter-1.7.11-beta",
+      "profile": "trekking",
+      "url": "https://brouter.de/brouter?lonlats=-79.953476%2C40.42583%7C-79.968876%2C40.4355%7C-79.953476%2C40.42583&profile=trekking&alternativeidx=0&format=geojson",
+      "fetchedAt": "2026-10-30T18:57:38.117Z",
+      "attribution": "© OpenStreetMap contributors · ODbL 1.0",
+      "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "auditFile": "route-data/eliza-quick.json",
+      "walkMeters": 0,
+      "roadMeters": 0
+    },
+    "review": {
+      "date": "2026-10-30",
+      "fieldRidden": false,
+      "geometryHash": "c567bd0b1421f64a8e0d4f82002df8be57c1e15ea713159445946f223dbbc244",
+      "checks": [
+        "Visual comparison with street/trail map and official park/trail references",
+        "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",
+        "Routing access/one-way tags inspected; no flagged steps, bicycle prohibition, or reverse one-way",
+        "Street connectors, conservative walking sections, and rental-time limits disclosed"
+      ],
+      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
+    }
+  },
+  {
+    "id": "south-side",
+    "name": "South Side riverside",
+    "description": "A short, mostly flat ride along the South Side riverfront trail.",
+    "terrain": "Mostly paved riverside shared trail. Use the trail-side dock at S 4th Street; no approach from East Carson Street is included.",
+    "quickNote": "Mostly flat shared trail. Start at the trail-side dock.",
+    "cautions": [
+      "Yield to people walking, especially near the park and boat access.",
+      "Start on the trail side of the railway at station 9. Access from elsewhere in South Side may involve the railway crossing.",
+      "Campus travel is excluded; check dock availability before returning to station 9."
+    ],
+    "overview": [
+      "Start at station 9 on the South Side Trail.",
+      "Follow the riverside trail east toward South Side Riverfront Park.",
+      "Turn at the plotted point and retrace the trail to station 9."
+    ],
+    "kind": "river",
+    "symbol": "⌁",
+    "status": "map-reviewed",
+    "categories": [
+      "quick",
+      "trails"
+    ],
+    "startStationId": "9",
+    "stationIds": [
+      "9"
+    ],
+    "destination": {
+      "name": "South Side Trail & S 4th St · station 9",
+      "lat": 40.431336,
+      "lon": -79.995106
+    },
+    "bikeAdvice": "Either bike suits the mostly flat trail. Choose an e-bike if you want help reaching the start.",
+    "rentalNote": "Moving time excludes stops and travel to the start. Leave time for an available dock; this estimate is not a rental allowance.",
+    "sources": [
+      {
+        "label": "Three Rivers Heritage Trail map",
+        "url": "https://friendsoftheriverfront.org/wp-content/uploads/2024/07/2024-Map-and-Guide_web_01-1.pdf"
+      },
+      {
+        "label": "Current trail alerts",
+        "url": "https://friendsoftheriverfront.org/"
+      }
+    ],
+    "points": [
+      [
+        40.431327,
+        -79.995104
+      ],
+      [
+        40.431355,
+        -79.994978
+      ],
+      [
+        40.431363,
+        -79.994636
+      ],
+      [
+        40.431344,
+        -79.994238
+      ],
+      [
+        40.431299,
+        -79.993515
+      ],
+      [
+        40.431318,
+        -79.9934
+      ],
+      [
+        40.431434,
+        -79.992912
+      ],
+      [
+        40.431417,
+        -79.991902
+      ],
+      [
+        40.431402,
+        -79.991723
+      ],
+      [
+        40.431368,
+        -79.991651
+      ],
+      [
+        40.43129,
+        -79.991574
+      ],
+      [
+        40.431252,
+        -79.991349
+      ],
+      [
+        40.431255,
+        -79.991186
+      ],
+      [
+        40.431262,
+        -79.991051
+      ],
+      [
+        40.431332,
+        -79.990837
+      ],
+      [
+        40.431376,
+        -79.990677
+      ],
+      [
+        40.431401,
+        -79.990451
+      ],
+      [
+        40.431418,
+        -79.990234
+      ],
+      [
+        40.4314,
+        -79.990074
+      ],
+      [
+        40.431361,
+        -79.989943
+      ],
+      [
+        40.43141,
+        -79.989769
+      ],
+      [
+        40.43144,
+        -79.989582
+      ],
+      [
+        40.431466,
+        -79.989305
+      ],
+      [
+        40.431517,
+        -79.989089
+      ],
+      [
+        40.431496,
+        -79.988748
+      ],
+      [
+        40.431535,
+        -79.988593
+      ],
+      [
+        40.431591,
+        -79.988433
+      ],
+      [
+        40.431643,
+        -79.988219
+      ],
+      [
+        40.431684,
+        -79.988013
+      ],
+      [
+        40.431696,
+        -79.987917
+      ],
+      [
+        40.431688,
+        -79.987829
+      ],
+      [
+        40.431646,
+        -79.98769
+      ],
+      [
+        40.431628,
+        -79.987591
+      ],
+      [
+        40.431626,
+        -79.987442
+      ],
+      [
+        40.431703,
+        -79.986957
+      ],
+      [
+        40.431848,
+        -79.985851
+      ],
+      [
+        40.431882,
+        -79.98542
+      ],
+      [
+        40.431978,
+        -79.984955
+      ],
+      [
+        40.432009,
+        -79.984481
+      ],
+      [
+        40.432048,
+        -79.983536
+      ],
+      [
+        40.432033,
+        -79.983064
+      ],
+      [
+        40.432037,
+        -79.982926
+      ],
+      [
+        40.432092,
+        -79.982484
+      ],
+      [
+        40.432097,
+        -79.98237
+      ],
+      [
+        40.432087,
+        -79.982171
+      ],
+      [
+        40.432059,
+        -79.98192
+      ],
+      [
+        40.43208,
+        -79.981633
+      ],
+      [
+        40.432123,
+        -79.981399
+      ],
+      [
+        40.432145,
+        -79.981183
+      ],
+      [
+        40.4322,
+        -79.980491
+      ],
+      [
+        40.432207,
+        -79.980312
+      ],
+      [
+        40.432201,
+        -79.980183
+      ],
+      [
+        40.432238,
+        -79.980122
+      ],
+      [
+        40.432263,
+        -79.980026
+      ],
+      [
+        40.432438,
+        -79.978661
+      ],
+      [
+        40.432527,
+        -79.978211
+      ],
+      [
+        40.432659,
+        -79.977518
+      ],
+      [
+        40.432667,
+        -79.977398
+      ],
+      [
+        40.432659,
+        -79.977518
+      ],
+      [
+        40.432527,
+        -79.978211
+      ],
+      [
+        40.432438,
+        -79.978661
+      ],
+      [
+        40.432263,
+        -79.980026
+      ],
+      [
+        40.432238,
+        -79.980122
+      ],
+      [
+        40.432201,
+        -79.980183
+      ],
+      [
+        40.432207,
+        -79.980312
+      ],
+      [
+        40.4322,
+        -79.980491
+      ],
+      [
+        40.432145,
+        -79.981183
+      ],
+      [
+        40.432123,
+        -79.981399
+      ],
+      [
+        40.43208,
+        -79.981633
+      ],
+      [
+        40.432059,
+        -79.98192
+      ],
+      [
+        40.432087,
+        -79.982171
+      ],
+      [
+        40.432097,
+        -79.98237
+      ],
+      [
+        40.432092,
+        -79.982484
+      ],
+      [
+        40.432037,
+        -79.982926
+      ],
+      [
+        40.432033,
+        -79.983064
+      ],
+      [
+        40.432048,
+        -79.983536
+      ],
+      [
+        40.432009,
+        -79.984481
+      ],
+      [
+        40.431978,
+        -79.984955
+      ],
+      [
+        40.431882,
+        -79.98542
+      ],
+      [
+        40.431848,
+        -79.985851
+      ],
+      [
+        40.431703,
+        -79.986957
+      ],
+      [
+        40.431626,
+        -79.987442
+      ],
+      [
+        40.431628,
+        -79.987591
+      ],
+      [
+        40.431646,
+        -79.98769
+      ],
+      [
+        40.431688,
+        -79.987829
+      ],
+      [
+        40.431696,
+        -79.987917
+      ],
+      [
+        40.431684,
+        -79.988013
+      ],
+      [
+        40.431643,
+        -79.988219
+      ],
+      [
+        40.431591,
+        -79.988433
+      ],
+      [
+        40.431535,
+        -79.988593
+      ],
+      [
+        40.431496,
+        -79.988748
+      ],
+      [
+        40.431517,
+        -79.989089
+      ],
+      [
+        40.431466,
+        -79.989305
+      ],
+      [
+        40.43144,
+        -79.989582
+      ],
+      [
+        40.43141,
+        -79.989769
+      ],
+      [
+        40.431361,
+        -79.989943
+      ],
+      [
+        40.4314,
+        -79.990074
+      ],
+      [
+        40.431418,
+        -79.990234
+      ],
+      [
+        40.431401,
+        -79.990451
+      ],
+      [
+        40.431376,
+        -79.990677
+      ],
+      [
+        40.431332,
+        -79.990837
+      ],
+      [
+        40.431262,
+        -79.991051
+      ],
+      [
+        40.431255,
+        -79.991186
+      ],
+      [
+        40.431252,
+        -79.991349
+      ],
+      [
+        40.43129,
+        -79.991574
+      ],
+      [
+        40.431368,
+        -79.991651
+      ],
+      [
+        40.431402,
+        -79.991723
+      ],
+      [
+        40.431417,
+        -79.991902
+      ],
+      [
+        40.431434,
+        -79.992912
+      ],
+      [
+        40.431318,
+        -79.9934
+      ],
+      [
+        40.431299,
+        -79.993515
+      ],
+      [
+        40.431344,
+        -79.994238
+      ],
+      [
+        40.431363,
+        -79.994636
+      ],
+      [
+        40.431355,
+        -79.994978
+      ],
+      [
+        40.431327,
+        -79.995104
+      ]
+    ],
+    "elevations": [
+      216.75,
+      216.75,
+      216.75,
+      217,
+      217.5,
+      217.5,
+      217,
+      217.25,
+      217.5,
+      217.75,
+      218,
+      218.25,
+      218,
+      218,
+      217.5,
+      217.25,
+      217.25,
+      217.25,
+      217.5,
+      217.75,
+      217.5,
+      217.25,
+      217,
+      216.75,
+      217,
+      217,
+      216.5,
+      216,
+      216,
+      216,
+      215.75,
+      216,
+      216,
+      216,
+      216,
+      216,
+      216.5,
+      217.25,
+      217.5,
+      218.25,
+      218.25,
+      218,
+      217.25,
+      217.25,
+      217.25,
+      217.5,
+      217.5,
+      217.5,
+      217.75,
+      218.75,
+      219,
+      219.25,
+      219.25,
+      219,
+      217.25,
+      216.75,
+      217,
+      217,
+      217,
+      216.75,
+      217.25,
+      219,
+      219.25,
+      219.25,
+      219,
+      218.75,
+      217.75,
+      217.5,
+      217.5,
+      217.5,
+      217.25,
+      217.25,
+      217.25,
+      218,
+      218.25,
+      218.25,
+      217.5,
+      217.25,
+      216.5,
+      216,
+      216,
+      216,
+      216,
+      216,
+      215.75,
+      216,
+      216,
+      216,
+      216.5,
+      217,
+      217,
+      216.75,
+      217,
+      217.25,
+      217.5,
+      217.75,
+      217.5,
+      217.25,
+      217.25,
+      217.25,
+      217.5,
+      218,
+      218,
+      218.25,
+      218,
+      217.75,
+      217.5,
+      217.25,
+      217,
+      217.5,
+      217.5,
+      217,
+      216.75,
+      216.75,
+      217
+    ],
+    "ascentMeters": 2,
+    "checkpoints": [
+      {
+        "name": "South Side Trail & S 4th St · station 9",
+        "lat": 40.431336,
+        "lon": -79.995106
+      },
+      {
+        "name": "Turnaround near South Side Riverfront Park",
+        "lat": 40.432667,
+        "lon": -79.977398
+      },
+      {
+        "name": "Return to station 9",
+        "lat": 40.431336,
+        "lon": -79.995106
+      }
+    ],
+    "source": {
+      "provider": "BRouter-1.7.11-beta",
+      "profile": "trekking",
+      "url": "https://brouter.de/brouter?lonlats=-79.995106%2C40.431336%7C-79.977398%2C40.432667%7C-79.995106%2C40.431336&profile=trekking&alternativeidx=0&format=geojson",
+      "fetchedAt": "2026-10-30T18:57:38.263Z",
+      "attribution": "© OpenStreetMap contributors · ODbL 1.0",
+      "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "auditFile": "route-data/south-side.json",
+      "walkMeters": 0,
+      "roadMeters": 0
+    },
+    "review": {
+      "date": "2026-10-30",
+      "fieldRidden": false,
+      "geometryHash": "27fc186380743d05de02b0b10f39d983c6de54c2c6bd8ed28aea765c09d1ffd4",
+      "checks": [
+        "Visual comparison with street/trail map and official park/trail references",
+        "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",
+        "Routing access/one-way tags inspected; no flagged steps, bicycle prohibition, or reverse one-way",
+        "Street connectors, conservative walking sections, and rental-time limits disclosed"
+      ],
+      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
+    }
+  },
+  {
+    "id": "north-shore",
+    "name": "North Shore riverfront",
+    "description": "An easy riverside out-and-back past PNC Park along the Allegheny.",
+    "terrain": "Mostly paved riverfront shared trail with short ramps and underpasses. This starts on the North Shore, farther from CMU.",
+    "quickNote": "Riverfront trail with busy shared areas near PNC Park.",
+    "cautions": [
+      "Slow down near pedestrians, underpasses, and stadium crowds; follow event closures.",
+      "Stay on the north bank. This avoids the Convention Center bank and does not head west to Chateau.",
+      "Campus travel is excluded. Start and finish at station 23."
+    ],
+    "overview": [
+      "Start at station 23 near Fort Duquesne Bridge.",
+      "Follow the riverfront trail east past PNC Park, staying on the north bank.",
+      "Turn near Rachel Carson Bridge and retrace the track to station 23."
+    ],
+    "kind": "river",
+    "symbol": "⌁",
+    "status": "map-reviewed",
+    "categories": [
+      "quick",
+      "trails"
+    ],
+    "startStationId": "23",
+    "stationIds": [
+      "23"
+    ],
+    "destination": {
+      "name": "Station 23 · route start",
+      "lat": 40.445751,
+      "lon": -80.009073
+    },
+    "bikeAdvice": "Either bike suits the mostly flat trail. Choose an e-bike if you want help reaching the start.",
+    "rentalNote": "Moving time excludes stops and travel to the start. Leave time for an available dock; this estimate is not a rental allowance.",
+    "sources": [
+      {
+        "label": "Three Rivers Heritage Trail map",
+        "url": "https://friendsoftheriverfront.org/wp-content/uploads/2024/07/2024-Map-and-Guide_web_01-1.pdf"
+      },
+      {
+        "label": "Current trail alerts",
+        "url": "https://friendsoftheriverfront.org/"
+      }
+    ],
+    "points": [
+      [
+        40.445779,
+        -80.009084
+      ],
+      [
+        40.445885,
+        -80.008521
+      ],
+      [
+        40.445889,
+        -80.008501
+      ],
+      [
+        40.44591,
+        -80.008384
+      ],
+      [
+        40.445913,
+        -80.008366
+      ],
+      [
+        40.446031,
+        -80.007693
+      ],
+      [
+        40.446082,
+        -80.007405
+      ],
+      [
+        40.446037,
+        -80.007392
+      ],
+      [
+        40.446016,
+        -80.007407
+      ],
+      [
+        40.445953,
+        -80.007453
+      ],
+      [
+        40.445892,
+        -80.007513
+      ],
+      [
+        40.445806,
+        -80.00765
+      ],
+      [
+        40.445692,
+        -80.007768
+      ],
+      [
+        40.445647,
+        -80.007835
+      ],
+      [
+        40.445582,
+        -80.008037
+      ],
+      [
+        40.445535,
+        -80.008138
+      ],
+      [
+        40.445487,
+        -80.008239
+      ],
+      [
+        40.445565,
+        -80.007863
+      ],
+      [
+        40.445593,
+        -80.007696
+      ],
+      [
+        40.445639,
+        -80.00732
+      ],
+      [
+        40.445641,
+        -80.007224
+      ],
+      [
+        40.44564,
+        -80.007083
+      ],
+      [
+        40.445654,
+        -80.006988
+      ],
+      [
+        40.445716,
+        -80.00679
+      ],
+      [
+        40.44575,
+        -80.006648
+      ],
+      [
+        40.445852,
+        -80.006062
+      ],
+      [
+        40.446032,
+        -80.005114
+      ],
+      [
+        40.446132,
+        -80.004739
+      ],
+      [
+        40.446234,
+        -80.00444
+      ],
+      [
+        40.446374,
+        -80.004161
+      ],
+      [
+        40.446483,
+        -80.00396
+      ],
+      [
+        40.446526,
+        -80.003886
+      ],
+      [
+        40.446692,
+        -80.003934
+      ],
+      [
+        40.446699,
+        -80.0039
+      ],
+      [
+        40.446772,
+        -80.003544
+      ],
+      [
+        40.446761,
+        -80.0034
+      ],
+      [
+        40.446775,
+        -80.003308
+      ],
+      [
+        40.446946,
+        -80.002773
+      ],
+      [
+        40.446954,
+        -80.002752
+      ],
+      [
+        40.446992,
+        -80.002748
+      ],
+      [
+        40.447018,
+        -80.002718
+      ],
+      [
+        40.447024,
+        -80.002699
+      ],
+      [
+        40.447023,
+        -80.002663
+      ],
+      [
+        40.446998,
+        -80.002614
+      ],
+      [
+        40.447022,
+        -80.002539
+      ],
+      [
+        40.447058,
+        -80.002474
+      ],
+      [
+        40.447202,
+        -80.002281
+      ],
+      [
+        40.447215,
+        -80.002249
+      ],
+      [
+        40.447223,
+        -80.00219
+      ],
+      [
+        40.447233,
+        -80.002011
+      ],
+      [
+        40.447239,
+        -80.001957
+      ],
+      [
+        40.447362,
+        -80.001537
+      ],
+      [
+        40.447548,
+        -80.00088
+      ],
+      [
+        40.447681,
+        -80.000442
+      ],
+      [
+        40.447822,
+        -80.00009
+      ],
+      [
+        40.447861,
+        -80.000011
+      ],
+      [
+        40.447883,
+        -79.999968
+      ],
+      [
+        40.448064,
+        -79.999441
+      ],
+      [
+        40.44819,
+        -79.999075
+      ],
+      [
+        40.448216,
+        -79.9988
+      ],
+      [
+        40.448346,
+        -79.998654
+      ],
+      [
+        40.448437,
+        -79.998419
+      ],
+      [
+        40.448693,
+        -79.997753
+      ],
+      [
+        40.448828,
+        -79.997583
+      ],
+      [
+        40.448693,
+        -79.997753
+      ],
+      [
+        40.448437,
+        -79.998419
+      ],
+      [
+        40.448346,
+        -79.998654
+      ],
+      [
+        40.448216,
+        -79.9988
+      ],
+      [
+        40.44819,
+        -79.999075
+      ],
+      [
+        40.448064,
+        -79.999441
+      ],
+      [
+        40.447883,
+        -79.999968
+      ],
+      [
+        40.447861,
+        -80.000011
+      ],
+      [
+        40.447822,
+        -80.00009
+      ],
+      [
+        40.447681,
+        -80.000442
+      ],
+      [
+        40.447548,
+        -80.00088
+      ],
+      [
+        40.447362,
+        -80.001537
+      ],
+      [
+        40.447239,
+        -80.001957
+      ],
+      [
+        40.447233,
+        -80.002011
+      ],
+      [
+        40.447223,
+        -80.00219
+      ],
+      [
+        40.447215,
+        -80.002249
+      ],
+      [
+        40.447202,
+        -80.002281
+      ],
+      [
+        40.447058,
+        -80.002474
+      ],
+      [
+        40.447022,
+        -80.002539
+      ],
+      [
+        40.446998,
+        -80.002614
+      ],
+      [
+        40.447023,
+        -80.002663
+      ],
+      [
+        40.447024,
+        -80.002699
+      ],
+      [
+        40.447018,
+        -80.002718
+      ],
+      [
+        40.446992,
+        -80.002748
+      ],
+      [
+        40.446954,
+        -80.002752
+      ],
+      [
+        40.446946,
+        -80.002773
+      ],
+      [
+        40.446775,
+        -80.003308
+      ],
+      [
+        40.446761,
+        -80.0034
+      ],
+      [
+        40.446772,
+        -80.003544
+      ],
+      [
+        40.446699,
+        -80.0039
+      ],
+      [
+        40.446692,
+        -80.003934
+      ],
+      [
+        40.446526,
+        -80.003886
+      ],
+      [
+        40.446483,
+        -80.00396
+      ],
+      [
+        40.446374,
+        -80.004161
+      ],
+      [
+        40.446234,
+        -80.00444
+      ],
+      [
+        40.446132,
+        -80.004739
+      ],
+      [
+        40.446032,
+        -80.005114
+      ],
+      [
+        40.445852,
+        -80.006062
+      ],
+      [
+        40.44575,
+        -80.006648
+      ],
+      [
+        40.445716,
+        -80.00679
+      ],
+      [
+        40.445654,
+        -80.006988
+      ],
+      [
+        40.44564,
+        -80.007083
+      ],
+      [
+        40.445641,
+        -80.007224
+      ],
+      [
+        40.445639,
+        -80.00732
+      ],
+      [
+        40.445593,
+        -80.007696
+      ],
+      [
+        40.445565,
+        -80.007863
+      ],
+      [
+        40.445487,
+        -80.008239
+      ],
+      [
+        40.445535,
+        -80.008138
+      ],
+      [
+        40.445582,
+        -80.008037
+      ],
+      [
+        40.445647,
+        -80.007835
+      ],
+      [
+        40.445692,
+        -80.007768
+      ],
+      [
+        40.445806,
+        -80.00765
+      ],
+      [
+        40.445892,
+        -80.007513
+      ],
+      [
+        40.445953,
+        -80.007453
+      ],
+      [
+        40.446016,
+        -80.007407
+      ],
+      [
+        40.446037,
+        -80.007392
+      ],
+      [
+        40.446082,
+        -80.007405
+      ],
+      [
+        40.446031,
+        -80.007693
+      ],
+      [
+        40.445913,
+        -80.008366
+      ],
+      [
+        40.44591,
+        -80.008384
+      ],
+      [
+        40.445889,
+        -80.008501
+      ],
+      [
+        40.445885,
+        -80.008521
+      ],
+      [
+        40.445779,
+        -80.009084
+      ]
+    ],
+    "elevations": [
+      218.25,
+      219.5,
+      219.5,
+      219.75,
+      219.75,
+      220.75,
+      221,
+      221,
+      221,
+      221,
+      220.75,
+      220.5,
+      219.75,
+      219.5,
+      219,
+      218.5,
+      218.25,
+      219,
+      219.25,
+      219.75,
+      219.75,
+      219.75,
+      219.75,
+      220.25,
+      220.25,
+      216,
+      221.75,
+      220.5,
+      218.5,
+      217,
+      217,
+      216.75,
+      217,
+      217.25,
+      218,
+      218,
+      218,
+      220.5,
+      220.75,
+      221,
+      221.5,
+      221.5,
+      221.5,
+      221.25,
+      221.75,
+      222.25,
+      224.5,
+      224.75,
+      225,
+      226,
+      226.25,
+      228.5,
+      228,
+      222.75,
+      219.75,
+      219.5,
+      219.5,
+      217.75,
+      215.75,
+      216,
+      216,
+      216.25,
+      216.25,
+      216,
+      216.25,
+      216.25,
+      216,
+      216,
+      215.75,
+      217.75,
+      219.5,
+      219.5,
+      219.75,
+      222.75,
+      228,
+      228.5,
+      226.25,
+      226,
+      225,
+      224.75,
+      224.5,
+      222.25,
+      221.75,
+      221.25,
+      221.5,
+      221.5,
+      221.5,
+      221,
+      220.75,
+      220.5,
+      218,
+      218,
+      218,
+      217.25,
+      217,
+      216.75,
+      217,
+      217,
+      218.5,
+      220.5,
+      221.75,
+      216,
+      220.25,
+      220.25,
+      219.75,
+      219.75,
+      219.75,
+      219.75,
+      219.25,
+      219,
+      218.25,
+      218.5,
+      219,
+      219.5,
+      219.75,
+      220.5,
+      220.75,
+      221,
+      221,
+      221,
+      221,
+      220.75,
+      219.75,
+      219.75,
+      219.5,
+      219.5,
+      216.75
+    ],
+    "ascentMeters": 13,
+    "checkpoints": [
+      {
+        "name": "Station 23 · route start",
+        "lat": 40.445751,
+        "lon": -80.009073
+      },
+      {
+        "name": "Turnaround near Rachel Carson Bridge",
+        "lat": 40.448828,
+        "lon": -79.997583
+      },
+      {
+        "name": "Return to station 23",
+        "lat": 40.445751,
+        "lon": -80.009073
+      }
+    ],
+    "source": {
+      "provider": "BRouter-1.7.11-beta",
+      "profile": "trekking",
+      "url": "https://brouter.de/brouter?lonlats=-80.009073%2C40.445751%7C-79.997583%2C40.448828%7C-80.009073%2C40.445751&profile=trekking&alternativeidx=0&format=geojson",
+      "fetchedAt": "2026-10-30T18:57:38.424Z",
+      "attribution": "© OpenStreetMap contributors · ODbL 1.0",
+      "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "auditFile": "route-data/north-shore.json",
+      "walkMeters": 0,
+      "roadMeters": 0
+    },
+    "review": {
+      "date": "2026-10-30",
+      "fieldRidden": false,
+      "geometryHash": "113f4bde950b5e996b66533e0dd750adeccd0ebe6c3a90662fbda820db81ce09",
       "checks": [
         "Visual comparison with street/trail map and official park/trail references",
         "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",

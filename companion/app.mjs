@@ -2,6 +2,7 @@ import {HOME, NEARBY, HISTORY_IDS, isFresh, normalizeLive, distanceKm, localPart
 import {validateTrack as validateRoute, routeDistance, movingMinutes, nearbyRouteStations, routeToGPX as gpxXML} from './route-utils.mjs';
 import {mountNavigationGuide,mountRouteNavigation} from './navigation-ui.mjs';
 import {setupUpdates} from './updates.mjs';
+import {CATEGORIES,FAVORITES_STORAGE,favoriteKey,loadFavorites,saveFavorites,selectRoutes} from './library.mjs';
 
 const $ = id => document.getElementById(id);
 const FEED = 'https://pittsburgh.publicbikesystem.net/customer/gbfs/v3.0/';
@@ -13,6 +14,7 @@ const percent = value => `${Math.round(value * 100)}%`;
 const mapsURL = s => `https://maps.apple.com/?ll=${Number(s.lat)},${Number(s.lon)}&q=${encodeURIComponent(s.name)}`;
 let summary, proposals = [], imported = [], rides = [], view, source = 'Bundled snapshot', fetchNote = '', fetching = false;
 let stationMap, stationLayer, routeMap, routeStationLayer, activeRouteStations = [], storageAvailable = true, storageProblem = '', rideStorageBlocked = false;
+let favoriteKeys=[],favoritesPersistent=true,routeCategory='all',favoritesOnly=false;
 const STORAGE = {rides:'pogoh-rides-v1', routes:'pogoh-routes-v1', status:'pogoh-status-v1'};
 function readStored(key) {
   try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : null; }
@@ -179,30 +181,71 @@ function routeArt(route) {
   const path=xs.map((value,i) => `${i ? 'L' : 'M'}${x(value).toFixed(1)},${y(ys[i]).toFixed(1)}`).join(' ');
   return `<svg viewBox="0 0 300 130" aria-hidden="true"><path d="${path}" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="${x(xs[0])}" cy="${y(ys[0])}" r="6" fill="white" stroke="currentColor" stroke-width="3"/></svg>`;
 }
+function favoriteButton(route,isImported=false) {
+  const key=favoriteKey(route,isImported),saved=favoriteKeys.includes(key);
+  return `<button class="favorite-button" data-favorite="${esc(key)}" aria-pressed="${saved}" aria-label="${saved ? 'Remove' : 'Favorite'} ${esc(route.name)}${saved ? ' from favorites' : ''}" title="${saved ? 'Remove favorite' : 'Favorite this ride'}"><span aria-hidden="true">${saved ? '♥' : '♡'}</span></button>`;
+}
+function toggleFavorite(key) {
+  favoriteKeys=favoriteKeys.includes(key) ? favoriteKeys.filter(x => x!==key) : [...favoriteKeys,key];
+  if(favoritesPersistent) {
+    try {favoritesPersistent=saveFavorites(favoriteKeys,localStorage);} catch {favoritesPersistent=false;}
+  }
+  renderRoutes();
+  syncDetailFavorite();
+}
+function syncDetailFavorite() {
+  const button=$('route-detail').querySelector('[data-favorite]');
+  if(button) {
+    const saved=favoriteKeys.includes(button.dataset.favorite),name=$('route-detail-title').textContent;
+    button.setAttribute('aria-pressed',String(saved));button.setAttribute('aria-label',saved ? `Remove ${name} from favorites` : `Favorite ${name}`);
+    button.title=saved ? 'Remove favorite' : 'Favorite this ride';button.querySelector('span').textContent=saved ? '♥' : '♡';
+  }
+}
 function renderRoutes() {
   $('route-options').innerHTML=[...proposals,...imported].map(r => `<option>${esc(r.name)}</option>`).join('');
-  $('route-library').innerHTML = proposals.map((r,i) => {
-    const hasTrack=validateRoute(r),time=hasTrack ? movingMinutes(r) : null;
-    return `<article class="route-card"><div class="route-art ${r.kind}" aria-hidden="true">${routeArt(r)}</div><div class="content"><span class="badge ${r.status === 'map-reviewed' ? 'reviewed' : ''}">${r.status === 'map-reviewed' ? 'MAP REVIEWED' : 'DRAFT · MAP CHECK PENDING'}</span><h2>${esc(r.name)}</h2><p>${esc(r.description)}</p>${hasTrack ? `<div class="route-metrics"><strong>${routeDistance(r).toFixed(1)} km</strong><span>${time.min}–${time.max} min moving</span><span>~${Math.round(r.ascentMeters)} m climb</span></div><p class="small">Start & finish: station ${esc(r.startStationId)} · campus travel excluded</p>` : ''}<button class="button outline" data-proposal="${i}">Choose ride ↗</button></div></article>`;
-  }).join('') + imported.map((r,i) => `<article class="route-card"><div class="route-art" aria-hidden="true">${routeArt(r)}</div><div class="content"><span class="badge">IMPORTED GPX · NOT PATH-VERIFIED</span><h2>${esc(r.name)}</h2><p>${routeDistance(r).toFixed(1)} km of imported geometry · ${r.points.length.toLocaleString()} points</p><button class="button outline" data-imported="${i}">Review & export ↗</button></div></article>`).join('');
+  $('route-categories').innerHTML=Object.entries(CATEGORIES).filter(([id]) => id!=='imported' || imported.length).map(([id,label]) => `<button class="category-button" data-category="${id}" aria-pressed="${routeCategory===id}">${label}</button>`).join('');
+  $('route-categories').querySelectorAll('button').forEach(button => button.addEventListener('click',() => {
+    routeCategory=button.dataset.category;renderRoutes();$('route-categories').querySelector(`[data-category="${routeCategory}"]`).focus({preventScroll:true});
+  }));
+  $('favorites-only').setAttribute('aria-pressed',String(favoritesOnly));
+  $('favorites-only').textContent=`${favoritesOnly ? '♥' : '♡'} Favorites`;
+  $('favorites-note').textContent=favoritesPersistent ? 'Favorites stay in this browser.' : 'Favorites are temporary this visit. Saved browser data was left untouched.';
+  const entries=[...proposals.map((route,index) => ({route,index,imported:false,key:favoriteKey(route)})),...imported.map((route,index) => ({route,index,imported:true,key:favoriteKey(route,true)}))];
+  const selected=selectRoutes(entries,{category:routeCategory,favoritesOnly,favorites:favoriteKeys});
+  $('route-results').textContent=`${selected.length} ${selected.length===1 ? 'ride' : 'rides'}${favoritesOnly ? ' · favorites' : ''}`;
+  $('route-library').innerHTML=selected.map(entry => {
+    const r=entry.route,time=movingMinutes(r);
+    const badge=entry.imported ? 'IMPORTED · UNVERIFIED' : r.status==='map-reviewed' ? 'MAP REVIEWED' : 'MAP CHECK PENDING';
+    return `<article class="route-card"><div class="route-art ${esc(r.kind || '')}" aria-hidden="true">${routeArt(r)}</div><div class="content"><div class="route-card-top"><span class="badge ${r.status==='map-reviewed' ? 'reviewed' : ''}">${badge}</span>${favoriteButton(r,entry.imported)}</div><h2>${esc(r.name)}</h2>${!entry.imported ? `<p>${esc(r.description)}</p>` : ''}<div class="route-metrics"><strong>${routeDistance(r).toFixed(1)} km</strong><span>${time.min}–${time.max} min moving</span>${!entry.imported ? `<span>~${Math.round(r.ascentMeters)} m climb</span>` : ''}</div>${!entry.imported ? `<p class="small">Station ${esc(r.startStationId)} · campus travel excluded</p>` : ''}<button class="button outline" data-${entry.imported ? 'imported' : 'proposal'}="${entry.index}">${entry.imported ? 'Review & export' : 'Choose ride'} ↗</button></div></article>`;
+  }).join('') || `<p class="empty">${favoritesOnly ? 'No favorites here yet. Tap a heart on a ride to save it.' : 'No rides in this category yet.'}</p>`;
   $('route-library').querySelectorAll('[data-proposal]').forEach(b => b.addEventListener('click',() => showRoute(proposals[+b.dataset.proposal],false)));
   $('route-library').querySelectorAll('[data-imported]').forEach(b => b.addEventListener('click',() => showRoute(imported[+b.dataset.imported],true)));
+  $('route-library').querySelectorAll('[data-favorite]').forEach(b => b.addEventListener('click',() => {
+    const key=b.dataset.favorite;toggleFavorite(key);
+    const replacement=[...$('route-library').querySelectorAll('[data-favorite]')].find(x => x.dataset.favorite===key);
+    (replacement || $('favorites-only')).focus({preventScroll:true});
+  }));
 }
+
 function showRoute(route, isImported) {
   if (routeMap) { routeMap.remove(); routeMap = null; }
   routeStationLayer=null;
   const panel = $('route-detail'); panel.hidden = false;
   const hasTrack=validateRoute(route),time=hasTrack ? movingMinutes(route) : null;
   const quickNotes={schenley:'Hilly park roads · e-bike recommended. Follow one-way signs.',eliza:'Mostly flat trail · allow extra time to dock within 30 minutes.', 'river-loop':'Busy streets and a railway crossing. Plan a dock stop: this ride can exceed 30 minutes.'};
-  panel.innerHTML = `<p class="eyebrow">${isImported ? 'IMPORTED · UNVERIFIED' : route.status === 'map-reviewed' ? 'MAP REVIEWED · NOT FIELD RIDDEN' : 'DRAFT · MAP REVIEW PENDING'}</p><h2 tabindex="-1" id="route-detail-title">${esc(route.name)}</h2>${hasTrack ? `<p class="route-detail-metrics">${routeDistance(route).toFixed(1)} km · ${time.min}–${time.max} min moving${!isImported ? ` · ~${Math.round(route.ascentMeters)} m climb` : ''}</p>` : ''}<p class="notice">${isImported ? 'Imported track: bicycle access has not been checked.' : esc(quickNotes[route.id] || route.rentalNote)}</p><div id="route-map" class="route-detail-map" aria-label="Route track and nearby stations"></div><div class="actions" id="route-actions"></div><div id="route-stations"></div>${!isImported ? `<details class="route-notes"><summary>Route notes & directions</summary><p>${esc(route.terrain)}</p><p>${esc(route.bikeAdvice)}</p><p>${esc(route.rentalNote)}</p><p class="small">Moving time assumes 12–18 km/h. Allow extra for hills, crossings, stops, and travel from campus.</p><ol class="route-overview">${route.overview.map(s => `<li>${esc(s)}</li>`).join('')}</ol><ul class="route-cautions">${route.cautions.map(s => `<li>${esc(s)}</li>`).join('')}</ul></details>` : ''}<details class="route-sources"><summary>Map review & sources</summary><div id="route-evidence" class="small"></div></details>`;
+  panel.innerHTML = `<p class="eyebrow">${isImported ? 'IMPORTED · UNVERIFIED' : route.status === 'map-reviewed' ? 'MAP REVIEWED · NOT FIELD RIDDEN' : 'DRAFT · MAP REVIEW PENDING'}</p><h2 tabindex="-1" id="route-detail-title">${esc(route.name)}</h2>${hasTrack ? `<p class="route-detail-metrics">${routeDistance(route).toFixed(1)} km · ${time.min}–${time.max} min moving${!isImported ? ` · ~${Math.round(route.ascentMeters)} m climb` : ''}</p>` : ''}<p class="notice">${isImported ? 'Imported track: bicycle access has not been checked.' : esc(route.quickNote || quickNotes[route.id] || route.rentalNote)}</p><div id="route-map" class="route-detail-map" aria-label="Route track and nearby stations"></div><div class="actions" id="route-actions"></div><div id="route-stations"></div>${!isImported ? `<details class="route-notes"><summary>Route notes & directions</summary><p>${esc(route.terrain)}</p><p>${esc(route.bikeAdvice)}</p><p>${esc(route.rentalNote)}</p><p class="small">Moving time assumes 12–18 km/h. Allow extra for hills, crossings, stops, and travel from campus.</p><ol class="route-overview">${route.overview.map(s => `<li>${esc(s)}</li>`).join('')}</ol><ul class="route-cautions">${route.cautions.map(s => `<li>${esc(s)}</li>`).join('')}</ul></details>` : ''}<details class="route-sources"><summary>Map review & sources</summary><div id="route-evidence" class="small"></div></details>`;
   const back=document.createElement('button');back.className='button outline route-back';back.textContent='← All routes';
   back.addEventListener('click',() => {
     if(routeMap) routeMap.remove();routeMap=null;routeStationLayer=null;activeRouteStations=[];panel.hidden=true;
     $('route-library').hidden=false;
+    $('route-controls').hidden=false;$('favorites-note').hidden=false;$('route-results').hidden=false;
     $('routes-title').tabIndex=-1;$('routes-title').focus({preventScroll:true});$('routes-title').scrollIntoView({behavior:'instant',block:'start'});
   });
-  panel.prepend(back);
+  const favorite=document.createElement('span');favorite.className='route-detail-favorite';favorite.innerHTML=favoriteButton(route,isImported);
+  favorite.querySelector('button').addEventListener('click',() => toggleFavorite(favoriteKey(route,isImported)));
+  panel.prepend(back);back.after(favorite);
   $('route-library').hidden=true;
+  $('route-controls').hidden=true;$('favorites-note').hidden=true;$('route-results').hidden=true;
   const navigation=document.createElement('section');navigation.className='route-navigation';navigation.id='route-navigation';
   $('route-actions').after(navigation);mountRouteNavigation(navigation,route,{isImported});
   const follow=document.createElement('button');follow.className='button primary route-follow';follow.textContent='Follow ride ↓';
@@ -229,7 +272,7 @@ function showRoute(route, isImported) {
     remove.addEventListener('click',() => {
       if (!confirm('Remove this imported route from this browser? Export GPX first if you want a backup.')) return;
       imported = imported.filter(r => r !== route); writeStored(STORAGE.routes,imported);
-      if (routeMap) {routeMap.remove();routeMap=null;} panel.hidden=true; $('route-library').hidden=false; renderRoutes();
+      if (routeMap) {routeMap.remove();routeMap=null;} panel.hidden=true; $('route-library').hidden=false;$('route-controls').hidden=false;$('favorites-note').hidden=false;$('route-results').hidden=false;if(routeCategory==='imported' && !imported.length) routeCategory='all'; renderRoutes();
     });
     $('route-actions').append(remove);
     const note = document.createElement('p'); note.className = 'small'; note.textContent = 'Export keeps track points; elevation, timestamps, and turn instructions are omitted.'; panel.append(note);
@@ -307,6 +350,15 @@ async function start() {
   $('history-station').value = HOME;
   $('history-day').value = localParts(Date.now()).day;
   $('ride-date').value = localParts(Date.now()).date;
+  try {const favorites=loadFavorites(localStorage);favoriteKeys=favorites.keys;favoritesPersistent=favorites.persistent;} catch {favoritesPersistent=false;}
+  $('favorites-only').addEventListener('click',() => {favoritesOnly=!favoritesOnly;renderRoutes();});
+  window.addEventListener('storage',event => {
+    if(event.key===FAVORITES_STORAGE || event.key===null) {
+      try {const state=loadFavorites(localStorage);favoriteKeys=state.keys;favoritesPersistent=state.persistent;renderRoutes();
+        syncDetailFavorite();
+      } catch {favoritesPersistent=false;renderRoutes();}
+    }
+  });
   mountNavigationGuide($('navigation-guide'));
   renderNow(); renderHistory(); renderRoutes(); renderRides(); navigate();
   $('refresh').addEventListener('click',refreshLive);

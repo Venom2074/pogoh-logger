@@ -179,3 +179,31 @@ are implemented. Phone import/Watch sync are user-reported working. Field rides,
 remaining navigation checks, physical iPhone installation and remaining navigation checks remain.
 Pages publication and automatic summary regeneration are active. Phase 7 deliberately waits for several
 weeks of consistent data. This is not completion of every plan phase.
+
+
+## Categories, favorites, and browser support
+
+The library has All rides, Quick rides, Park & hills, River trails, and Longer
+rides filters, plus Imported when GPX imports exist. Quick rides have moving
+estimates no longer than 25 minutes; travel to the start and docking still need
+extra time. Categories can overlap. Favorites is a separate toggle that combines
+with the selected category. Hearts work on both cards and selected rides.
+
+Favorites use `pogoh-favorites-v1` in localStorage, independently of ride records.
+Built-in IDs survive renaming/reordering; imported tracks use a stable name and
+geometry fingerprint. Invalid saved favorites are preserved rather than overwritten;
+blocked/full storage keeps changes in memory with a visible notice. Same-origin
+browser tabs receive storage changes. Favorites do not sync between devices or
+between Firefox/Safari. Private browsing or clearing site data can remove them.
+
+The core browser features use standard APIs supported by current Firefox,
+including localStorage, modules, maps, GPX download/import, and the ride log.
+This is a compatibility expectation, not a completed Firefox device test:
+Windows Firefox UI automation was unavailable because browser URL-policy
+checks were unsupported. Verification used the supported in-app browser.
+Native file sharing is capability-detected; Download GPX remains available
+when it is unsupported. Home-screen installation varies by browser/platform;
+Safari remains the straightforward iPhone setup path. Sources checked October 30:
+[localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage),
+[Web Share](https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API), and
+[PWA installation](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable).

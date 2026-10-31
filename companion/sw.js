@@ -1,5 +1,5 @@
-const CACHE = 'pogoh-companion-v5';
-const SHELL = ['./','index.html','styles.css','app.mjs','core.mjs','route-utils.mjs','navigation.mjs','navigation-ui.mjs','updates.mjs','routes.json','routes/schenley.gpx','routes/eliza.gpx','routes/river-loop.gpx','icon.svg','icons/apple-touch-icon.png','icons/icon-192.png','icons/icon-512.png','manifest.webmanifest','vendor/leaflet.js','vendor/leaflet.css','data/summary.json'];
+const CACHE = 'pogoh-companion-v6';
+const SHELL = ['./','index.html','styles.css','app.mjs','core.mjs','route-utils.mjs','navigation.mjs','navigation-ui.mjs','updates.mjs','library.mjs','routes.json','routes/schenley.gpx','routes/eliza.gpx','routes/river-loop.gpx','routes/eliza-quick.gpx','routes/south-side.gpx','routes/north-shore.gpx','icon.svg','icons/apple-touch-icon.png','icons/icon-192.png','icons/icon-512.png','manifest.webmanifest','vendor/leaflet.js','vendor/leaflet.css','data/summary.json'];
 self.addEventListener('message',event => {
   if(event.data?.type === 'ACTIVATE_UPDATE') self.skipWaiting();
 });

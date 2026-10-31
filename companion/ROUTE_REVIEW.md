@@ -110,3 +110,40 @@ routing terrain model and is approximate.
 Still needed: field rides, actual campus-to-start routes, checked station
 detours, and iPhone/Watch navigation tests. No new account, paid service,
 GitHub setting, Azure resource, logger change, or hosting was introduced.
+
+
+## Three shorter trail rides — October 30, 2026
+
+| Ride | Station | Distance | Moving estimate | Modeled climb |
+| --- | --- | --- | --- | --- |
+| Eliza quick spin | 2 | 3.5 km | 12–17 min | 11 m |
+| South Side riverside | 9 | 3.1 km | 10–15 min | 2 m |
+| North Shore riverfront | 23 | 2.5 km | 8–13 min | 13 m |
+
+The three candidates were individually inspected over the rendered OpenStreetMap
+street/trail map. Their complete polylines and checkpoint locations were checked
+against the public routing/access audit and the official [2024 Three Rivers
+Heritage Trail guide](https://friendsoftheriverfront.org/wp-content/uploads/2024/07/2024-Map-and-Guide_web_01-1.pdf).
+Every new final audit reports zero street distance, zero conservative walking
+distance, and no flagged access/steps/reverse-one-way restrictions. Missing map
+tags are not proof of real-world access; signs and current conditions govern.
+
+- Eliza quick spin uses the first part of the reviewed Eliza corridor, returning
+  from a point on the trail. An initial misplaced turnaround added a service-road
+  spur; that candidate was discarded. The final path stays on the shared trail.
+- South Side starts at the trail-side station 9 and turns near the riverfront
+  park. The first station-26 candidate used streets and was discarded. The final
+  ride stays river-side of the railway; getting to the start from elsewhere can
+  still involve a railway crossing, which is disclosed in the route notes.
+- North Shore uses the ramped station-23 connection and the same-bank waterfront
+  trail past PNC Park, turning just beyond Rachel Carson Bridge. An initial
+  farther waypoint introduced roads and an ambiguous footpath; it was discarded.
+  Stadium crowds and event restrictions still need checking.
+
+The [operator's current alerts](https://friendsoftheriverfront.org/) listed the
+Chateau repair and the Convention Center painting closure. The new tracks do not
+enter Chateau or cross to the Convention Center bank. This is a dated source
+check, not a live closure guarantee. All three rides exclude travel from CMU,
+remain map-only reviews, and have not been field ridden or Watch-tested.
+Reviews are bound to geometry/elevation hashes; GPX files were regenerated only
+after visual review and the geometry/access checks passed.

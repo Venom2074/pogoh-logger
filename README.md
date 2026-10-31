@@ -53,9 +53,9 @@ ride log. Run `node tools/serve-companion.mjs` and open
 needed. Regenerate its dated fallback and charts with
 `node tools/build-companion.mjs` (local CSVs) or add `--remote` (latest public CSVs).
 
-Three starter rides now have map-reviewed tracks and GPX downloads, with route
-notes, estimated distance/time/climb, and nearby station counts. Field rides,
-and remaining navigation checks remain. Phone GPX import and Watch
+Six rides have map-reviewed tracks and GPX downloads, category filters, and
+browser-local favorites. Route notes include distance/time/climb and nearby
+station counts. Field rides and remaining navigation checks remain. Phone GPX import and Watch
 sync are user-reported working. Free permanent phone hosting is live; see
 [Pages publishing](companion/PUBLISHING.md), [`IMPLEMENTATION.md`](IMPLEMENTATION.md)
 and the [route review](companion/ROUTE_REVIEW.md).

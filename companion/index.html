@@ -61,8 +61,11 @@
         <div class="panel method"><h2>When to try</h2><p id="recommendation"></p><details><summary>How these charts work</summary><p>One sample per ten-minute UTC slot; each local date gets equal weight within an hour. Missing, invalid, and over-20-minute-old observations are excluded. Closed rental stations count as unavailable.</p><p>Highlighted hours need 3 distinct dates and 6 samples. The nearby group requires every member in the same snapshot. Repeated daylight-saving hours share a local date; skipped hours stay missing. Observations are not predictions or reservations.</p></details></div>
       </section>
       <section id="page-routes" class="page" hidden aria-labelledby="routes-title">
-        <div class="page-heading"><div><p class="eyebrow">TAKE THE LONG WAY HOME</p><h1 id="routes-title">A little room to roam.</h1><p class="lede">A park circuit, a trail out-and-back, and a longer river loop.</p></div><label class="button outline file-button">Import GPX<input id="gpx-import" type="file" accept=".gpx,application/gpx+xml"></label></div>
+        <div class="page-heading"><div><p class="eyebrow">TAKE THE LONG WAY HOME</p><h1 id="routes-title">A little room to roam.</h1><p class="lede">Find a ride for the time you have.</p></div><label class="button outline file-button">Import GPX<input id="gpx-import" type="file" accept=".gpx,application/gpx+xml"></label></div>
         <p id="route-status" class="small" role="status">Choose a ride to see its map and send it to EasyRoute.</p>
+        <div id="route-controls" class="route-controls"><div class="route-category-buttons" id="route-categories" role="group" aria-label="Route category"></div><button id="favorites-only" class="button outline favorites-filter" aria-pressed="false">♡ Favorites</button></div>
+        <p id="favorites-note" class="small" role="status">Favorites stay in this browser.</p>
+        <p id="route-results" class="small" role="status"></p>
         <div id="route-library" class="route-grid"></div>
         <div class="panel" id="route-detail" hidden></div>
         <section class="panel navigation-guide" id="navigation-guide" aria-labelledby="navigation-guide-title"><h2 id="navigation-guide-title">From phone to wrist.</h2><p>Choose a route to see its free navigation options and device-check guide.</p></section>

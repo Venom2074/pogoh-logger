@@ -158,3 +158,27 @@ travel-mode links are correct. Browser error log was empty. No laptop server
 is needed. The homepage can be added to the iPhone Home Screen; physical Safari
 installation, native sharing, and remaining Watch checks remain user-device QA.
 No Azure resources, tokens, logger code/workflow, or raw data were edited.
+
+
+## Route-library expansion and favorites — October 30, 2026
+
+Completed the previously interrupted local implementation: three shorter trail
+rides (Eliza quick spin 3.5 km, South Side riverside 3.1 km, North Shore riverfront
+2.5 km), category filters, and browser-local favorites. New tracks were visually
+reviewed on the map and access audited before recording their geometry hashes;
+all remain not field ridden. See companion/ROUTE_REVIEW.md for discarded
+candidates, final route evidence, and current-closure limits.
+
+Favorites combine with categories, work in cards/details, survive reloads, and
+handle empty results/storage failure without touching ride records. Imported
+routes have stable geometry/name identities. Same-browser storage changes update
+other tabs. Cache v6 and the 26-asset public package include all six GPX files.
+
+50 automated tests pass, including filter intersections, favorite persistence,
+invalid/blocked storage, category metadata, six route reviews/exports, and cache/
+package completeness. Supported-browser QA confirmed saved favorites after reload,
+category/favorite empty states, detail removal and return to the filtered list,
+all three plotted tracks, and 390px layout without page overflow. Firefox itself
+was not UI-tested: the earlier Windows browser-control attempt was unsupported.
+Native sharing still falls back to GPX downloads when unavailable. Publishing
+uses the existing approved Pages workflow; no new hosting settings or services.
