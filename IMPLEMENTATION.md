@@ -182,3 +182,14 @@ all three plotted tracks, and 390px layout without page overflow. Firefox itself
 was not UI-tested: the earlier Windows browser-control attempt was unsupported.
 Native sharing still falls back to GPX downloads when unavailable. Publishing
 uses the existing approved Pages workflow; no new hosting settings or services.
+
+
+Publication verification: commit `53e486b`, Pages run 41165799977 succeeded,
+including the 50-test suite. The HTTPS root plus 26 public assets returned 200;
+all six GPX files have valid track content and `application/gpx+xml`. Hosted
+routes.json contains six map-reviewed rides with category metadata. The live
+browser shows the categories/hearts and correct four-ride Quick category; the
+Update button activated v6 successfully and browser error log was empty.
+The six-route local library also reloaded from cache after stopping the owned
+preview server (public internet remained connected). No user-owned preview was
+stopped, no personal records were cleared, and no Azure/GitHub settings changed.
