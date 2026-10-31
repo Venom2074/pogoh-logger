@@ -216,3 +216,14 @@ screen/offline checks; individual Watch track/turn/haptic/locked-phone checks;
 and timing recommendations after enough repeated weekday coverage. Phase 7
 modeling needs several weeks and held-out evaluation. Weather, automatic sync,
 and native phone/Watch apps remain optional extensions based on actual use.
+
+
+Ten-route publication verification: commit `328691a`, Pages run 41181539295
+succeeded with all 54 tests. The HTTPS root plus 30 public assets returned 200;
+all ten GPX files have track content and the correct MIME type. The hosted
+library has ten reviewed routes and the bridge-ramp display label. Browser QA
+confirmed 10 cards, two park rides, phone-width layout without page overflow,
+and successful v7 update activation; the hosted browser error log was empty.
+The ten-route library loaded from local cache after the owned preview stopped
+(internet remained connected). No field-riding or new Watch passes are claimed.
+The temporary local preview was stopped; the user's other preview was untouched.
