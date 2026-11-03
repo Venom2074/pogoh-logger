@@ -3,6 +3,7 @@ import {validateTrack as validateRoute, routeDistance, movingMinutes, nearbyRout
 import {mountNavigationGuide,mountRouteNavigation} from './navigation-ui.mjs';
 import {setupUpdates} from './updates.mjs';
 import {CATEGORIES,FAVORITES_STORAGE,favoriteKey,loadFavorites,saveFavorites,selectRoutes} from './library.mjs';
+import {rentalLegs} from './rental-plan.mjs';
 
 const $ = id => document.getElementById(id);
 const FEED = 'https://pittsburgh.publicbikesystem.net/customer/gbfs/v3.0/';
@@ -14,6 +15,7 @@ const percent = value => `${Math.round(value * 100)}%`;
 const mapsURL = s => `https://maps.apple.com/?ll=${Number(s.lat)},${Number(s.lon)}&q=${encodeURIComponent(s.name)}`;
 let summary, proposals = [], imported = [], rides = [], view, source = 'Bundled snapshot', fetchNote = '', fetching = false;
 let stationMap, stationLayer, routeMap, routeStationLayer, activeRouteStations = [], storageAvailable = true, storageProblem = '', rideStorageBlocked = false;
+let activeRentalRoute=null;
 let favoriteKeys=[],favoritesPersistent=true,routeCategory='all',favoritesOnly=false;
 const STORAGE = {rides:'pogoh-rides-v1', routes:'pogoh-routes-v1', status:'pogoh-status-v1'};
 function readStored(key) {
@@ -72,7 +74,7 @@ function renderNow() {
   });
   $('alternatives').innerHTML = alternatives.map(st => `<article class="station-card"><span class="station-id">STATION ${esc(st.station_id)} · ${Math.round(distanceKm(home,st)*1000)} m straight line</span><h3>${esc(st.name)}</h3><div class="numbers">${countsHTML(st.station_id)}</div><div class="station-foot"><span>${esc(statusLabel(st.station_id))}</span><a href="${mapsURL(st)}">Open in Maps ↗</a></div></article>`).join('');
   renderStationMap();
-  if (!$('route-detail').hidden) renderRouteStations(activeRouteStations);
+  if (!$('route-detail').hidden) {renderRouteStations(activeRouteStations);renderRentalPlan();}
 }
 function createMap(id, center, zoom) {
   if (!globalThis.L) { $(id).textContent = 'The map could not load. Station details and Maps links are available below.'; return null; }
@@ -216,7 +218,7 @@ function renderRoutes() {
   $('route-library').innerHTML=selected.map(entry => {
     const r=entry.route,time=movingMinutes(r);
     const badge=entry.imported ? 'IMPORTED · UNVERIFIED' : r.status==='map-reviewed' ? 'MAP REVIEWED' : 'MAP CHECK PENDING';
-    return `<article class="route-card"><div class="route-art ${esc(r.kind || '')}" aria-hidden="true">${routeArt(r)}</div><div class="content"><div class="route-card-top"><span class="badge ${r.status==='map-reviewed' ? 'reviewed' : ''}">${badge}</span>${favoriteButton(r,entry.imported)}</div><h2>${esc(r.name)}</h2>${!entry.imported ? `<p>${esc(r.description)}</p>` : ''}<div class="route-metrics"><strong>${routeDistance(r).toFixed(1)} km</strong><span>${time.min}–${time.max} min moving</span>${!entry.imported ? `<span>${esc(r.climbLabel || `~${Math.round(r.ascentMeters)} m climb`)}</span>` : ''}</div>${!entry.imported ? `<p class="small">Station ${esc(r.startStationId)} · campus travel excluded</p>` : ''}<button class="button outline" data-${entry.imported ? 'imported' : 'proposal'}="${entry.index}">${entry.imported ? 'Review & export' : 'Choose ride'} ↗</button></div></article>`;
+    return `<article class="route-card"><div class="route-art ${esc(r.kind || '')}" aria-hidden="true">${routeArt(r)}</div><div class="content"><div class="route-card-top"><span class="badge ${r.status==='map-reviewed' ? 'reviewed' : ''}">${badge}</span>${favoriteButton(r,entry.imported)}</div><h2>${esc(r.name)}</h2>${!entry.imported ? `<p>${esc(r.description)}</p>` : ''}<div class="route-metrics"><strong>${routeDistance(r).toFixed(1)} km</strong><span>${time.min}–${time.max} min moving</span>${!entry.imported ? `<span>${esc(r.climbLabel || `~${Math.round(r.ascentMeters)} m climb`)}</span>` : ''}</div>${!entry.imported ? `<p class="small">Station ${esc(r.startStationId)} · campus travel excluded</p>${r.rentalPlan ? `<p class="rental-card-note">${r.rentalPlan.stops.length} planned docking ${r.rentalPlan.stops.length===1 ? 'stop' : 'stops'} · ${r.rentalPlan.stops.length+1} rentals</p>` : ''}` : ''}<button class="button outline" data-${entry.imported ? 'imported' : 'proposal'}="${entry.index}">${entry.imported ? 'Review & export' : 'Choose ride'} ↗</button></div></article>`;
   }).join('') || `<p class="empty">${favoritesOnly ? 'No favorites here yet. Tap a heart on a ride to save it.' : 'No rides in this category yet.'}</p>`;
   $('route-library').querySelectorAll('[data-proposal]').forEach(b => b.addEventListener('click',() => showRoute(proposals[+b.dataset.proposal],false)));
   $('route-library').querySelectorAll('[data-imported]').forEach(b => b.addEventListener('click',() => showRoute(imported[+b.dataset.imported],true)));
@@ -229,14 +231,14 @@ function renderRoutes() {
 
 function showRoute(route, isImported) {
   if (routeMap) { routeMap.remove(); routeMap = null; }
-  routeStationLayer=null;
+  routeStationLayer=null;activeRentalRoute=!isImported && route.rentalPlan ? route : null;
   const panel = $('route-detail'); panel.hidden = false;
   const hasTrack=validateRoute(route),time=hasTrack ? movingMinutes(route) : null;
   const quickNotes={schenley:'Hilly park roads · e-bike recommended. Follow one-way signs.',eliza:'Mostly flat trail · allow extra time to dock within 30 minutes.', 'river-loop':'Busy streets and a railway crossing. Plan a dock stop: this ride can exceed 30 minutes.'};
-  panel.innerHTML = `<p class="eyebrow">${isImported ? 'IMPORTED · UNVERIFIED' : route.status === 'map-reviewed' ? 'MAP REVIEWED · NOT FIELD RIDDEN' : 'DRAFT · MAP REVIEW PENDING'}</p><h2 tabindex="-1" id="route-detail-title">${esc(route.name)}</h2>${hasTrack ? `<p class="route-detail-metrics">${routeDistance(route).toFixed(1)} km · ${time.min}–${time.max} min moving${!isImported ? ` · ${esc(route.climbLabel || `~${Math.round(route.ascentMeters)} m climb`)}` : ''}</p>` : ''}<p class="notice">${isImported ? 'Imported track: bicycle access has not been checked.' : esc(route.quickNote || quickNotes[route.id] || route.rentalNote)}</p><div id="route-map" class="route-detail-map" aria-label="Route track and nearby stations"></div><div class="actions" id="route-actions"></div><div id="route-stations"></div>${!isImported ? `<details class="route-notes"><summary>Route notes & directions</summary><p>${esc(route.terrain)}</p><p>${esc(route.bikeAdvice)}</p><p>${esc(route.rentalNote)}</p><p class="small">Moving time assumes 12–18 km/h. Allow extra for hills, crossings, stops, and travel from campus.</p><ol class="route-overview">${route.overview.map(s => `<li>${esc(s)}</li>`).join('')}</ol><ul class="route-cautions">${route.cautions.map(s => `<li>${esc(s)}</li>`).join('')}</ul></details>` : ''}<details class="route-sources"><summary>Map review & sources</summary><div id="route-evidence" class="small"></div></details>`;
+  panel.innerHTML = `<p class="eyebrow">${isImported ? 'IMPORTED · UNVERIFIED' : route.status === 'map-reviewed' ? 'MAP REVIEWED · NOT FIELD RIDDEN' : 'DRAFT · MAP REVIEW PENDING'}</p><h2 tabindex="-1" id="route-detail-title">${esc(route.name)}</h2>${hasTrack ? `<p class="route-detail-metrics">${routeDistance(route).toFixed(1)} km · ${time.min}–${time.max} min moving${!isImported ? ` · ${esc(route.climbLabel || `~${Math.round(route.ascentMeters)} m climb`)}` : ''}</p>` : ''}<p class="notice">${isImported ? 'Imported track: bicycle access has not been checked.' : esc(route.quickNote || quickNotes[route.id] || route.rentalNote)}</p><section id="rental-plan" class="rental-plan" ${activeRentalRoute ? '' : 'hidden'}></section><div id="route-map" class="route-detail-map" aria-label="Route track and nearby stations"></div><div class="actions" id="route-actions"></div><div id="route-stations"></div>${!isImported ? `<details class="route-notes"><summary>Route notes & directions</summary><p>${esc(route.terrain)}</p><p>${esc(route.bikeAdvice)}</p><p>${esc(route.rentalNote)}</p><p class="small">Moving time assumes 12–18 km/h. Allow extra for hills, crossings, stops, and travel from campus.</p><ol class="route-overview">${route.overview.map(s => `<li>${esc(s)}</li>`).join('')}</ol><ul class="route-cautions">${route.cautions.map(s => `<li>${esc(s)}</li>`).join('')}</ul></details>` : ''}<details class="route-sources"><summary>Map review & sources</summary><div id="route-evidence" class="small"></div></details>`;
   const back=document.createElement('button');back.className='button outline route-back';back.textContent='← All routes';
   back.addEventListener('click',() => {
-    if(routeMap) routeMap.remove();routeMap=null;routeStationLayer=null;activeRouteStations=[];panel.hidden=true;
+    if(routeMap) routeMap.remove();routeMap=null;routeStationLayer=null;activeRouteStations=[];activeRentalRoute=null;panel.hidden=true;
     $('route-library').hidden=false;
     $('route-controls').hidden=false;$('favorites-note').hidden=false;$('route-results').hidden=false;
     $('routes-title').tabIndex=-1;$('routes-title').focus({preventScroll:true});$('routes-title').scrollIntoView({behavior:'instant',block:'start'});
@@ -251,12 +253,18 @@ function showRoute(route, isImported) {
   const follow=document.createElement('button');follow.className='button primary route-follow';follow.textContent='Follow ride ↓';
   follow.addEventListener('click',() => {const heading=navigation.querySelector('h3');heading.tabIndex=-1;heading.focus({preventScroll:true});navigation.scrollIntoView({behavior:'instant',block:'start'});});
   back.after(follow);
+  renderRentalPlan();
   if(hasTrack) {
     routeMap = createMap('route-map',route.points[0],14);
     if(routeMap) {
       const line=L.polyline(route.points,{color:'#335d3d',weight:5}).addTo(routeMap); routeMap.fitBounds(line.getBounds(),{padding:[24,24]});
       routeStationLayer=L.layerGroup().addTo(routeMap);
       addRouteDirection(route);
+      for(const [i,stop] of (route.rentalPlan?.stops || []).entries()) {
+        const name=`Dock stop ${i+1}: ${stop.name}`;
+        const icon=L.divIcon({className:'',html:`<span class="dock-map-marker">D${i+1}</span>`,iconSize:[34,30],iconAnchor:[17,15]});
+        L.marker(route.points[stop.pointIndex],{icon,title:name,alt:name}).addTo(routeMap).bindTooltip(name);
+      }
       const startIcon=L.divIcon({className:'',html:'<span class="route-start">S</span>',iconSize:[28,28],iconAnchor:[14,14]});
       const first=route.points[0],last=route.points.at(-1),closed=distanceKm({lat:first[0],lon:first[1]},{lat:last[0],lon:last[1]})<.025;
       L.marker(first,{icon:startIcon,title:closed ? 'Start and finish' : 'Start'}).addTo(routeMap).bindTooltip(closed ? 'Start / finish' : 'Start');
@@ -311,6 +319,25 @@ function renderRouteStations(stations) {
   }
   $('route-stations').innerHTML = `<h3>Stations near this route</h3><p class="small">In ride order · straight-line distance from track. Check docks before returning.</p>${stations.length ? stations.map(s => {const t = statusFor(s.station_id);return `<article class="route-station"><a href="${mapsURL(s)}">${esc(s.name)}</a>${s.proximity ? `<span class="small">${s.proximity.startFinish ? 'Start / finish' : `First pass: ${s.proximity.alongKm.toFixed(1)} km`} · ~${Math.round(s.proximity.distanceKm*1000)} m from track</span>` : ''}<span>${t.known ? `${t.s.ebikes} e-bikes · ${t.s.pedal_bikes} pedal · ${t.s.docks_open} docks` : 'Counts unavailable'}</span><span class="small">${esc(statusLabel(s.station_id))}</span></article>`;}).join('') : '<p class="small">No stations found within 300 m of this route.</p>'}`;
 }
+function renderRentalPlan() {
+  const container=$('rental-plan');
+  if(!container || !activeRentalRoute) return;
+  const timingOpen=container.querySelector('details')?.open || false;
+  const route=activeRentalRoute,legs=rentalLegs(route,summary.stations);
+  container.innerHTML=`<h3>${legs.length} rentals · ${route.rentalPlan.stops.length} docking ${route.rentalPlan.stops.length===1 ? 'stop' : 'stops'}</h3><p class="small">Start a fresh rental at station ${esc(route.startStationId)}; travel from TCS is separate.</p><ol class="rental-legs">${legs.map(leg=>`<li><strong>${esc(leg.start.station.station_id)} → ${esc(leg.end.station.station_id)}</strong><span>${leg.km.toFixed(1)} km · ${leg.min}–${leg.max} min moving</span><span class="small">Allow ~${leg.budgetMinutes} min including buffer</span></li>`).join('')}</ol><div class="rental-docks">${route.rentalPlan.stops.map((stop,i)=>{
+    const station=summary.stations.find(x=>x.station_id===stop.stationId),t=statusFor(stop.stationId);
+    const counts=t.known ? `${t.s.docks_open} docks · ${t.s.ebikes} e-bikes · ${t.s.pedal_bikes} pedal` : 'Counts unavailable';
+    const warning=!t.live ? 'Check current availability in PBSC.' : !t.s.is_returning || !t.s.docks_open ? 'No usable dock showing. Check another station before riding.' : !t.s.is_renting ? 'Rentals closed: check another stop.' : t.s.ebikes+t.s.pedal_bikes===0 ? 'No bikes showing for re-rental. Check PBSC; availability can change.' : 'Available now; a dock or bike is not reserved.';
+    return `<article class="rental-dock"><strong>D${i+1} · ${esc(station.name)} · ${esc(stop.stationId)}</strong><span>${counts}</span><span class="small">${esc(statusLabel(stop.stationId))}${!t.live && t.known ? ` · ${esc(stamp(t.s.last_reported_utc))}` : ''}</span><span class="small">${warning}</span><button class="button outline" data-dock-map="${esc(stop.stationId)}" aria-label="Show ${esc(station.name)} dock on route map">Show stop on map</button></article>`;
+  }).join('')}</div><p class="small">At each stop: dock → confirm the green light and ended trip → re-rent an available bike.</p><details><summary>Timing & availability</summary><p class="small">Moving time assumes 12–18 km/h. Each allowance adds the whole track’s mapped walking correction at 4 km/h and a ${route.rentalPlan.bufferMinutes}-minute buffer for crossings and docking. This is conservative planning, not a guarantee. Finish each rental before 30 minutes; check docks and bikes before leaving and again as you approach.</p><p class="small"><a href="https://www.cmu.edu/transportation/wheels/pogoh.html" target="_blank" rel="noopener">CMU rental terms ↗</a> · <a href="https://pogoh.com/faq/" target="_blank" rel="noopener">POGOH returns ↗</a></p></details>`;
+  container.querySelector('details').open=timingOpen;
+  container.querySelectorAll('[data-dock-map]').forEach(button=>button.addEventListener('click',()=>{
+    const station=summary.stations.find(x=>x.station_id===button.dataset.dockMap);
+    if(routeMap) routeMap.setView([station.lat,station.lon],18);
+    $('route-map').tabIndex=-1;$('route-map').focus({preventScroll:true});$('route-map').scrollIntoView({behavior:'instant',block:'center'});
+  }));
+}
+
 function persistRides() {
   if (!rideStorageBlocked) writeStored(STORAGE.rides,rides);
   renderRides();

@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 // Publish runtime assets only. Raw data, Azure code, and local files stay out.
 export const PUBLIC_FILES=Object.freeze([
   'index.html','styles.css','app.mjs','core.mjs','route-utils.mjs','navigation.mjs',
-  'navigation-ui.mjs','updates.mjs','library.mjs','sw.js','routes.json','data/summary.json',
+  'navigation-ui.mjs','updates.mjs','library.mjs','rental-plan.mjs','sw.js','routes.json','data/summary.json',
   'routes/schenley.gpx','routes/eliza.gpx','routes/river-loop.gpx',
   'routes/eliza-quick.gpx','routes/south-side.gpx','routes/north-shore.gpx',
   'routes/junction-hollow.gpx','routes/stadium-trail.gpx','routes/hot-metal-gap.gpx','routes/hazelwood-green.gpx',

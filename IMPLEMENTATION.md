@@ -227,3 +227,43 @@ and successful v7 update activation; the hosted browser error log was empty.
 The ten-route library loaded from local cache after the owned preview stopped
 (internet remained connected). No field-riding or new Watch passes are claimed.
 The temporary local preview was stopped; the user's other preview was untouched.
+
+## Deferred route requirements — November 3, 2026
+
+The user asked to record requirements only, without implementing them now.
+See the new deferred section in plan.md: every ride starts at a POGOH station;
+starts must be within about 15–20 minutes of campus/TCS; rides that can exceed
+30 minutes need an explicit intermediate docking/re-rental itinerary; ordinary
+road riding is allowed. Walking versus cycling for the approach-time limit is
+still unspecified and should be clarified when implementation resumes.
+All ten current built-in rides already start and finish at POGOH stations.
+No route, app, GPX, hosting, or published-site changes were made for this note.
+
+
+## Explicit rental-reset itineraries — November 3, 2026
+
+The user subsequently authorized implementing resets on Eliza and Monongahela,
+and selected First Ave & B St (31). Eliza now follows 2 → 31 → 2 (8.562 km);
+Monongahela follows 49 → 31 → 9 → 49 (10.124 km). Both actual tracks reach the
+dock access. Reviewed street/path connections and corrected Hot Metal bicycle-
+bridge waypoints are documented in companion/ROUTE_REVIEW.md. Campus proximity
+remains deferred; its approach travel mode is still unspecified.
+
+Added shared rental-leg validation/calculation, compact per-leg distance/time
+and buffer allowances, live-or-dated stop counts/status, D1/D2 map markers, and
+map focus buttons. GPX files include named dock waypoints and revised tracks.
+The generator rejects changed rental-plan hashes, missing stops on rides over
+30 minutes, missed dock approaches, invalid stop order, and rental estimates
+without buffer below 30 minutes. Estimates use 12–18 km/h, conservative walking
+correction and five-minute buffer; counts/resets are not guaranteed.
+
+All 60 automated tests pass, including the six new rental-plan/GPX tests.
+Cache v8 and the publication allowlist include rental-plan.mjs and ten GPXs
+(31 runtime assets). Map review is not field verification. Existing device
+checks become outdated for the changed geometry; reimport the updated files.
+No logger/Azure/token/settings or paid service changes were made.
+Local browser QA: both plans fit a 390px viewport with no horizontal page
+overflow. Stop map buttons center the actual dock access; D1/D2 remain visible,
+per-leg values match validation, GPX links target the revised files, and the
+browser error log is empty. Summary refreshed from the checkout to November 3,
+19:53:17 UTC, with 144/144 recent ten-minute slots. Publication follows.

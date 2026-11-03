@@ -4,6 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {parseCSV,distanceKm} from '../companion/core.mjs';
 import {validateTrack,routeDistance,movingMinutes,positionOnRoute,nearbyRouteStations,geometryProblems,auditWaySegments,routeToGPX} from '../companion/route-utils.mjs';
+import {rentalPlanProblems} from '../companion/rental-plan.mjs';
 
 const line={name:'Test route',points:[[40,-80],[40,-79.998]]};
 test('track validation rejects impossible coordinates and missing names',() => {
@@ -56,6 +57,8 @@ for(const route of library) test(`${route.id}: reviewed track, access audit, sta
   assert.equal(route.status,'map-reviewed'); assert.equal(route.review.fieldRidden,false);
   assert.equal(createHash('sha256').update(JSON.stringify({points:route.points,elevations:route.elevations})).digest('hex'),route.review.geometryHash);
   assert.deepEqual(geometryProblems(route),[]);
+  assert.deepEqual(rentalPlanProblems(route,stations),[]);
+  if(route.rentalPlan) assert.equal(createHash('sha256').update(JSON.stringify(route.rentalPlan)).digest('hex'),route.review.rentalPlanHash);
   const station=stations.find(s => s.station_id===route.startStationId),first=route.points[0],last=route.points.at(-1);
   assert.ok(distanceKm(station,{lat:first[0],lon:first[1]})<.05);
   assert.ok(distanceKm(station,{lat:last[0],lon:last[1]})<.05);

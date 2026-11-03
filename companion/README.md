@@ -207,3 +207,23 @@ Safari remains the straightforward iPhone setup path. Sources checked October 30
 [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage),
 [Web Share](https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API), and
 [PWA installation](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable).
+
+
+## Planned rental resets
+
+Eliza Furnace visits First Ave & B St (31), splitting 8.6 km into two rentals.
+Monongahela visits 31 and South Side Trail & S 4th St (9), splitting 10.1 km
+into three. The compact route panel lists each rental's distance/time, planning
+allowance, stop counts/status, and a map button. Details explain the assumptions.
+
+`rentalPlan` stores schema 1, a five-minute buffer, and ordered stops with
+`stationId`, `name`, and `pointIndex`. The shared validator requires actual dock
+access within 25 m and each slower rental estimate plus walking correction and
+buffer below 30 minutes. Review hashes cover geometry and the rental plan;
+both must match before GPX generation. Downloads retain the actual dock visits
+and add named GPX waypoints, whose display varies by importing app. Reimport
+updated files into EasyRoute; old imports do not change automatically.
+
+Dock successfully and confirm the trip ended before re-renting. Availability
+is never reserved and travel from TCS is separate. The 15–20-minute campus
+approach limit remains deferred until walking versus cycling is clarified.

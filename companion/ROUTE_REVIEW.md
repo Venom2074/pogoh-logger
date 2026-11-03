@@ -1,5 +1,7 @@
 # Starter route review - October 30, 2026
 
+Latest route revision: November 3, 2026 (rental resets below).
+
 These are map-reviewed cycling tracks, not field-ridden routes or live closure
 reports. The GPX tracks preserve the plotted geometry; place links in Apple
 Maps do not. The app does not claim exact custom-route Watch navigation.
@@ -7,8 +9,8 @@ Maps do not. The app does not claim exact custom-route Watch navigation.
 | Ride | Start / finish | Horizontal distance | Moving-time estimate | Modeled climb |
 | --- | --- | --- | --- | --- |
 | Schenley Overlook circuit | Station 33 | 5.1 km | 17-25 min | about 60 m |
-| Eliza Furnace out-and-back | Station 2 | 7.5 km | 25-37 min | about 22 m |
-| Monongahela river loop | Station 49 | 10.2 km | 34-51 min | about 41 m |
+| Eliza Furnace out-and-back (revised Nov 3) | Station 2 | 8.6 km | 29-43 min | about 64 m |
+| Monongahela river loop (revised Nov 3) | Station 49 | 10.1 km | 34-51 min | about 43 m |
 
 Time assumes 12-18 km/h and excludes stops, crossings, and extra climbing time.
 It is not a rental allowance. The full river loop exceeds 30 minutes at those
@@ -37,7 +39,9 @@ their own time buffer; another rental is never guaranteed.
   An unnecessary waypoint into the Phipps grounds was removed.
 - Eliza's route retraces the same paved trail. Its turnaround stays on the
   cycleway before the downtown service/road connection, avoiding an initial
-  candidate's gate and street detour to station 31.
+  candidate's gate and street detour to station 31. **Superseded November 3:**
+  the user requested that station as an explicit docking reset; see the new
+  access review below.
 - The river loop's Smithfield Street Bridge endpoints were corrected against
   the routed crossing. The final line uses Smithfield and Hot Metal bicycle
   crossings, the South Side Trail, and street connectors near Station Square
@@ -86,14 +90,15 @@ node tools/build-route-files.mjs
 node --test tests/*.test.mjs
 ```
 
-The review command records a SHA-256 hash over points and elevations. Editing
-either invalidates export generation until another review is recorded. It does
+The review command records SHA-256 hashes over points/elevations and any rental
+plan. Editing either invalidates export generation until another review is recorded. It does
 not perform visual review for you. Do not publish stale GPX files after importing
 new candidates; the complete library must pass review and artifact checks first.
 Update the service-worker cache version/list when changing cached route files.
 
 The generator retains one GPX track per ride, horizontal points, modeled
-elevation, and source/license metadata. It does not generate turn instructions
+elevation, source/license metadata, and named dock waypoints where planned.
+Waypoint display depends on the importing app. It does not generate turn instructions
 or promise that a navigation app will preserve the line. These are portable
 files for a compatible app; Watch testing is still a separate phase.
 
@@ -201,3 +206,48 @@ checked for the Chateau and Convention Center restrictions; these four tracks
 do not enter those sections. Source checks are dated, not live closure reports.
 All ten rides exclude campus-to-start travel, retain their source/license and
 review hash in the dataset, and remain not field ridden.
+
+
+## Rental-reset revision — November 3, 2026
+
+The user requested actual dock visits for the two longer rides and identified
+First Ave & B St (31) for Eliza. Public operator station coordinates were checked
+against the regenerated BRouter tracks. Each visit is an ordered track vertex,
+not a nearby-station suggestion. The rendered downtown connector, station 31
+approach, Smithfield crossing/street connection, station 9 railway approach,
+and Hot Metal bicycle-bridge ramps were inspected in the app over OSM.
+Access audits flag no steps, bicycle prohibition, private restriction, or reverse
+one-way. Gate availability, signs, crossings, and current access need field checks.
+
+| Ride / rental | Distance | Moving estimate | Planning allowance |
+| --- | --- | --- | --- |
+| Eliza: 2 → 31 | 4.281 km | 15–22 min | 28 min |
+| Eliza: 31 → 2 | 4.281 km | 15–22 min | 28 min |
+| Monongahela: 49 → 31 | 4.214 km | 15–22 min | 29 min |
+| Monongahela: 31 → 9 | 1.994 km | 7–10 min | 17 min |
+| Monongahela: 9 → 49 | 3.915 km | 14–20 min | 27 min |
+
+Eliza is now 8.562 km, with a short downtown service-path/First Avenue connector,
+gates and uncontrolled crossings; walk the ambiguous dock access. Its audit has
+308 m of roads and 38 m of conservatively walked paths. Monongahela is now
+10.124 km, with 1,158 m of roads and 104 m of conservatively walked paths. It
+retains busy-street and railway cautions. Its Hot Metal waypoints now lie on the
+bicycle crossing, eliminating unnecessary road-end spurs. Station 31's track
+vertex is about 3.6 m from its registered coordinates; station 9 is about 1 m.
+
+The allowance is the rounded slower estimate at 12 km/h plus the entire track's
+walking correction (replace cycling at 12 km/h with walking at 4 km/h), rounded
+up on every rental, plus five minutes for crossings and docking. This deliberately
+conservative allocation avoids pretending to know exact walking time per leg.
+Allowances below 30 minutes are planning estimates, never a promise against
+extra charges. TCS-to-start riding is excluded: return any approach rental and
+begin a fresh rental at the named start. Check open docks, operating status,
+and bikes before leaving and again near the stop; none are reserved.
+
+[CMU terms](https://www.cmu.edu/transportation/wheels/pogoh.html) and
+[POGOH returns FAQ](https://pogoh.com/faq/) were checked November 3: complete
+the return (green light and trip ended) before a new rental. The app shows live
+or explicitly dated counts, planned D1/D2 map markers, per-rental estimates,
+and named GPX waypoints. Old EasyRoute imports must be replaced with the new
+file. No new route-specific Watch, field-riding, or dock-access pass is claimed.
+The campus proximity limit remains deferred, pending the approach travel mode.

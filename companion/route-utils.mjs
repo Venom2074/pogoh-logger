@@ -69,5 +69,10 @@ export function routeToGPX(route) {
   const elevation = Array.isArray(route.elevations) && route.elevations.length === route.points.length && route.elevations.every(Number.isFinite);
   const license = route.source ? '<copyright author="OpenStreetMap contributors"><license>https://opendatacommons.org/licenses/odbl/1-0/</license></copyright>' : '';
   const origin = route.source?.url ? `<link href="${xml(route.source.url)}"><text>Route source</text></link>` : '';
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="POGOH companion" xmlns="http://www.topografix.com/GPX/1/1">\n<metadata><name>${xml(route.name)}</name>${license}${origin}</metadata>\n<trk><name>${xml(route.name)}</name><desc>Route geometry, not turn instructions. Check current access and conditions.</desc><trkseg>\n${route.points.map((p,i) => `<trkpt lat="${p[0]}" lon="${p[1]}">${elevation ? `<ele>${route.elevations[i]}</ele>` : ''}</trkpt>`).join('\n')}\n</trkseg></trk>\n</gpx>\n`;
+  const docks=(route.rentalPlan?.stops || []).map((stop,i) => {
+    if(!Number.isInteger(stop.pointIndex) || !route.points[stop.pointIndex]) throw new Error('Invalid GPX dock waypoint');
+    const p=route.points[stop.pointIndex];
+    return `<wpt lat="${p[0]}" lon="${p[1]}"><name>${xml(`Dock ${i+1}: ${stop.name || `station ${stop.stationId}`}`)}</name><desc>End rental, confirm return, then re-rent an available bike.</desc></wpt>`;
+  }).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="POGOH companion" xmlns="http://www.topografix.com/GPX/1/1">\n<metadata><name>${xml(route.name)}</name>${license}${origin}</metadata>\n${docks ? docks+'\n' : ''}<trk><name>${xml(route.name)}</name><desc>Route geometry, not turn instructions. Check current access and conditions.</desc><trkseg>\n${route.points.map((p,i) => `<trkpt lat="${p[0]}" lon="${p[1]}">${elevation ? `<ele>${route.elevations[i]}</ele>` : ''}</trkpt>`).join('\n')}\n</trkseg></trk>\n</gpx>\n`;
 }

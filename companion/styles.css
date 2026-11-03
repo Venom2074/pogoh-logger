@@ -70,3 +70,15 @@ summary{cursor:pointer;min-height:44px;padding:12px 0;font-weight:600}
 #favorites-note,#route-results{margin-bottom:8px;font-size:11px}
 #route-library>.empty{grid-column:1/-1}
 @media(max-width:720px){.route-controls{flex-wrap:wrap;gap:10px}.route-category-buttons{gap:6px}.category-button{font-size:11px;padding:8px 12px}.favorites-filter{font-size:12px}.route-detail-favorite{margin-top:0}}
+.rental-plan{background:#f2f4e9;border:1px solid #d2ddc5;border-radius:12px;padding:20px;margin:18px 0}
+.rental-plan h3{font-size:20px;margin-bottom:10px}
+.rental-legs{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.rental-legs li{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;padding:10px 12px;border:1px solid #d8e0cd;border-radius:8px;background:#fbfcf5;font-size:13px}
+.rental-legs strong{min-width:70px}
+.rental-docks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:14px 0}
+.rental-dock{display:grid;gap:6px;padding:14px;border:1px solid #d2ddc5;border-radius:9px;background:#fbfcf5;font-size:13px}
+.rental-dock .button{justify-self:start;margin-top:4px}
+.rental-plan>p:last-of-type{margin-bottom:0}
+.dock-map-marker{display:grid;place-items:center;width:34px;height:30px;border:2px solid white;border-radius:8px;background:#99602e;color:white;font-weight:750;font-size:12px;box-shadow:0 1px 5px #173d3250}
+.route-card .rental-card-note{color:#365d36;font-weight:650}
+@media(max-width:720px){.rental-plan{padding:14px}.rental-plan h3{font-size:18px}.rental-legs li{align-items:flex-start;gap:5px 10px;font-size:12px}.rental-legs li .small{width:100%}.rental-docks{grid-template-columns:1fr}}

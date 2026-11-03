@@ -29,6 +29,43 @@ plan only; it does not authorize implementation or service changes.
   an account-requiring service. Prepare a reviewable result before requesting
   approval to publish or enable hosting.
 
+## Route requirements recorded November 3, 2026 — partly implemented
+
+Initially recorded as notes only. Siddharth subsequently authorized adding
+docking resets to Eliza Furnace and the Monongahela loop, and selected First
+Ave & B St for Eliza. Those two rides now have reviewed dock visits, per-rental
+estimates, live stop availability, and updated GPX files. The campus proximity
+requirement remains deferred. These requirements take precedence over the
+initial route ideas below when that work resumes.
+
+- **Always start at a POGOH station.** Every curated ride must begin at an
+  official POGOH station where a bike can be rented. All ten current built-in
+  rides already start and finish at POGOH stations; the missing feature is
+  planned intermediate docking on the longer rides.
+- **Keep the start close to campus.** Use TCS Hall as the campus reference.
+  The start should be no more than about 15–20 minutes away along an actual
+  navigable approach. Show its distance and travel time separately from the
+  ride itself. The user has not specified whether the limit means walking or
+  cycling; clarify that when implementing rather than silently assuming a mode
+  or substituting straight-line distance for travel time.
+- **Plan a rental-reset stop for every ride that can exceed 30 minutes.**
+  Include an explicit POGOH docking stop around the middle, and more stops if
+  needed so each rental leg stays under 30 minutes with a buffer for crossings,
+  station access, dismounting, and docking. A duration range extending above
+  30 minutes also needs this treatment. The plotted route must actually reach
+  the dock access; a station merely listed nearby does not satisfy this rule.
+  Show the stop and estimated times/distances of the individual rental legs.
+  Explain that the rider must successfully end the rental before re-renting;
+  dock/bike availability must be checked and cannot be guaranteed.
+- **Normal road riding is allowed.** Routes need not be restricted to parks
+  and trails. Inspect bicycle access, road directions, intersections, and
+  station approaches, and clearly disclose shared-traffic sections.
+
+Before applying the proximity rule, audit all ten current rides rather than
+assuming they meet it. Eliza now resets at station 31; Monongahela resets at
+stations 31 and 9. Their estimates include walking correction and docking
+buffer, but actual riding and station access still need field checks.
+
 ## Phase 1 — Validate the inputs and agree on the experience
 
 - Confirm that ten-minute logging continues reliably and assess data freshness,

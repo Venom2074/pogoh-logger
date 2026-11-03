@@ -45,6 +45,16 @@
         "lon": -79.992183
       },
       {
+        "name": "Dock and re-rent · station 31 · First Ave & B St",
+        "lat": 40.435829,
+        "lon": -79.996952
+      },
+      {
+        "name": "Return via Eliza Furnace Trail",
+        "lat": 40.433999,
+        "lon": -79.992183
+      },
+      {
         "name": "Return to station 2",
         "lat": 40.42583,
         "lon": -79.953476
@@ -66,6 +76,11 @@
         "lon": -79.992183
       },
       {
+        "name": "Dock and re-rent · station 31 · First Ave & B St",
+        "lat": 40.435829,
+        "lon": -79.996952
+      },
+      {
         "name": "Smithfield Street Bridge · north approach",
         "lat": 40.436277,
         "lon": -80.001063
@@ -76,19 +91,19 @@
         "lon": -80.003692
       },
       {
-        "name": "South Side Trail · station 9",
+        "name": "Dock and re-rent · station 9 · South Side Trail & S 4th St",
         "lat": 40.431336,
         "lon": -79.995106
       },
       {
         "name": "Hot Metal Bridge · south approach",
-        "lat": 40.4271,
-        "lon": -79.9632
+        "lat": 40.427764,
+        "lon": -79.96175
       },
       {
         "name": "Hot Metal Bridge · north approach",
-        "lat": 40.4296,
-        "lon": -79.9609
+        "lat": 40.429355,
+        "lon": -79.958981
       },
       {
         "name": "Return to station 49",

@@ -1328,7 +1328,7 @@
     "name": "Eliza Furnace out-and-back",
     "kind": "river",
     "symbol": "≈",
-    "description": "Follow the Eliza Furnace Trail toward downtown, then retrace it to the Swinburne trailhead.",
+    "description": "Eliza Furnace out-and-back with a docking reset at First Ave & B St.",
     "status": "map-reviewed",
     "startStationId": "2",
     "destination": {
@@ -1338,21 +1338,23 @@
     },
     "stationIds": [
       "2",
+      "31",
       "49"
     ],
-    "terrain": "Paved shared-use trail with a relatively gentle elevation profile. The turnaround stays on the trail before the downtown street connection.",
+    "terrain": "Mostly paved shared trail, with a short downtown street/ramp connection to station 31. Walk the short dock access and use marked crossings.",
     "bikeAdvice": "Either bike type suits the trail. An e-bike is optional; it does not extend your included rental time.",
-    "rentalNote": "The full out-and-back may exceed 30 minutes. A shorter outing needs an earlier turnaround and a buffer for docking; no fixed turnaround guarantees a free ride.",
+    "rentalNote": "Two rentals: station 2 → 31 → 2. End the first rental at First Ave & B St, confirm the return, then re-rent an available bike for the return ride. Check docks before leaving.",
     "cautions": [
-      "Slow for trail users, gates, and the turnaround.",
-      "The campus descent and return climb are excluded. Start and finish at trail-side station 2.",
-      "Station 49 is a nearby reference with an access detour; it is not a guaranteed mid-ride rental reset."
+      "The downtown dock connection uses streets and ramps; follow the plotted approach and marked crossings.",
+      "Walk the short station access where bicycle access is unclear.",
+      "If you rented at TCS, that approach is part of your current rental. Dock at station 2 before starting this itinerary.",
+      "An open dock and re-rental are not guaranteed. Check PBSC before riding; do not ride on assuming you can skip a full or closed stop."
     ],
     "overview": [
-      "Start at the Eliza Furnace trailhead by station 2.",
-      "Follow the plotted trail toward downtown.",
-      "Turn around at the marked point before the downtown street connection, or earlier for a shorter outing.",
-      "Retrace the trail and finish at station 2."
+      "Start a fresh rental at station 2, by the Swinburne trailhead.",
+      "Follow Eliza Furnace Trail toward downtown, then the plotted street/ramp connection to First Ave & B St.",
+      "Dock at station 31, confirm the rental ended, and re-rent an available bike.",
+      "Retrace the plotted route and finish by docking at station 2."
     ],
     "sources": [
       {
@@ -1592,6 +1594,214 @@
       [
         40.43398,
         -79.99186
+      ],
+      [
+        40.433999,
+        -79.992183
+      ],
+      [
+        40.434061,
+        -79.992288
+      ],
+      [
+        40.434063,
+        -79.992307
+      ],
+      [
+        40.434085,
+        -79.9926
+      ],
+      [
+        40.434112,
+        -79.992908
+      ],
+      [
+        40.434232,
+        -79.993796
+      ],
+      [
+        40.434293,
+        -79.994681
+      ],
+      [
+        40.434312,
+        -79.994775
+      ],
+      [
+        40.434373,
+        -79.994882
+      ],
+      [
+        40.434406,
+        -79.994968
+      ],
+      [
+        40.434461,
+        -79.995191
+      ],
+      [
+        40.434516,
+        -79.995362
+      ],
+      [
+        40.43462,
+        -79.995535
+      ],
+      [
+        40.435023,
+        -79.995267
+      ],
+      [
+        40.43512,
+        -79.995203
+      ],
+      [
+        40.435161,
+        -79.995176
+      ],
+      [
+        40.435225,
+        -79.995342
+      ],
+      [
+        40.435345,
+        -79.995643
+      ],
+      [
+        40.435609,
+        -79.99628
+      ],
+      [
+        40.435634,
+        -79.996335
+      ],
+      [
+        40.435639,
+        -79.996346
+      ],
+      [
+        40.435725,
+        -79.996536
+      ],
+      [
+        40.435772,
+        -79.996639
+      ],
+      [
+        40.435825,
+        -79.996782
+      ],
+      [
+        40.435781,
+        -79.99681
+      ],
+      [
+        40.435765,
+        -79.99687
+      ],
+      [
+        40.4358,
+        -79.99697
+      ],
+      [
+        40.435765,
+        -79.99687
+      ],
+      [
+        40.435781,
+        -79.99681
+      ],
+      [
+        40.435825,
+        -79.996782
+      ],
+      [
+        40.435772,
+        -79.996639
+      ],
+      [
+        40.435725,
+        -79.996536
+      ],
+      [
+        40.435639,
+        -79.996346
+      ],
+      [
+        40.435634,
+        -79.996335
+      ],
+      [
+        40.435609,
+        -79.99628
+      ],
+      [
+        40.435345,
+        -79.995643
+      ],
+      [
+        40.435225,
+        -79.995342
+      ],
+      [
+        40.435161,
+        -79.995176
+      ],
+      [
+        40.43512,
+        -79.995203
+      ],
+      [
+        40.435023,
+        -79.995267
+      ],
+      [
+        40.43462,
+        -79.995535
+      ],
+      [
+        40.434516,
+        -79.995362
+      ],
+      [
+        40.434461,
+        -79.995191
+      ],
+      [
+        40.434406,
+        -79.994968
+      ],
+      [
+        40.434373,
+        -79.994882
+      ],
+      [
+        40.434312,
+        -79.994775
+      ],
+      [
+        40.434293,
+        -79.994681
+      ],
+      [
+        40.434232,
+        -79.993796
+      ],
+      [
+        40.434112,
+        -79.992908
+      ],
+      [
+        40.434085,
+        -79.9926
+      ],
+      [
+        40.434063,
+        -79.992307
+      ],
+      [
+        40.434061,
+        -79.992288
       ],
       [
         40.433999,
@@ -1885,6 +2095,58 @@
       220.75,
       223.75,
       228.5,
+      231,
+      231.5,
+      236.25,
+      242,
+      245.75,
+      226.75,
+      224.5,
+      222.25,
+      220.5,
+      220,
+      220.25,
+      220.75,
+      227,
+      227.75,
+      228.25,
+      227.5,
+      226.75,
+      229.75,
+      230.25,
+      230.5,
+      232,
+      233,
+      234.5,
+      234.25,
+      234.5,
+      239.25,
+      234.5,
+      234.25,
+      234.5,
+      233,
+      232,
+      230.5,
+      230.25,
+      229.75,
+      226.75,
+      227.5,
+      228.25,
+      227.75,
+      227,
+      220.75,
+      220.25,
+      220,
+      220.5,
+      222.25,
+      224.5,
+      226.75,
+      245.75,
+      242,
+      236.25,
+      231.5,
+      231,
+      228.5,
       223.75,
       220.75,
       220.25,
@@ -1943,7 +2205,7 @@
       226.75,
       226.5
     ],
-    "ascentMeters": 22,
+    "ascentMeters": 64,
     "checkpoints": [
       {
         "name": "Eliza Furnace trailhead · station 2",
@@ -1956,6 +2218,16 @@
         "lon": -79.992183
       },
       {
+        "name": "Dock and re-rent · station 31 · First Ave & B St",
+        "lat": 40.435829,
+        "lon": -79.996952
+      },
+      {
+        "name": "Return via Eliza Furnace Trail",
+        "lat": 40.433999,
+        "lon": -79.992183
+      },
+      {
         "name": "Return to station 2",
         "lat": 40.42583,
         "lon": -79.953476
@@ -1964,36 +2236,50 @@
     "source": {
       "provider": "BRouter-1.7.11-beta",
       "profile": "trekking",
-      "url": "https://brouter.de/brouter?lonlats=-79.953476%2C40.42583%7C-79.992183%2C40.433999%7C-79.953476%2C40.42583&profile=trekking&alternativeidx=0&format=geojson",
-      "fetchedAt": "2026-10-30T04:06:28.321Z",
+      "url": "https://brouter.de/brouter?lonlats=-79.953476%2C40.42583%7C-79.992183%2C40.433999%7C-79.996952%2C40.435829%7C-79.992183%2C40.433999%7C-79.953476%2C40.42583&profile=trekking&alternativeidx=0&format=geojson",
+      "fetchedAt": "2026-11-03T19:58:25.872Z",
       "attribution": "© OpenStreetMap contributors · ODbL 1.0",
       "license": "https://opendatacommons.org/licenses/odbl/1-0/",
       "auditFile": "route-data/eliza.json",
-      "walkMeters": 0,
-      "roadMeters": 0
+      "walkMeters": 38,
+      "roadMeters": 308
     },
+    "categories": [
+      "trails"
+    ],
+    "rentalPlan": {
+      "schema": 1,
+      "bufferMinutes": 5,
+      "stops": [
+        {
+          "stationId": "31",
+          "name": "First Ave & B St",
+          "pointIndex": 83
+        }
+      ]
+    },
+    "quickNote": "Dock and re-rent at station 31 at the downtown end.",
     "review": {
-      "date": "2026-10-30",
+      "date": "2026-11-03",
       "fieldRidden": false,
-      "geometryHash": "74df68baf312c91333889ef731844ca615f79ad7666f598a65d2d639e71304c3",
+      "geometryHash": "5e6f316ddffb6011ee16d539db6ee9f018167b75e3b578a0f6a9ecd4751e8bd1",
       "checks": [
         "Visual comparison with street/trail map and official park/trail references",
         "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",
         "Routing access/one-way tags inspected; no flagged steps, bicycle prohibition, or reverse one-way",
-        "Street connectors, conservative walking sections, and rental-time limits disclosed"
+        "Street connectors, conservative walking sections, and rental-time limits disclosed",
+        "Plotted docking approaches and ordered rental legs reviewed with walking allowance and docking buffer"
       ],
-      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
-    },
-    "categories": [
-      "trails"
-    ]
+      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified.",
+      "rentalPlanHash": "ee4fdcb3cdb8991a983757b3ace147d26040369bab745b006326fdc750a4fb9e"
+    }
   },
   {
     "id": "river-loop",
     "name": "Monongahela river loop",
     "kind": "loop",
     "symbol": "↺",
-    "description": "A longer circuit using Eliza Furnace, Smithfield Street Bridge, the South Side, and Hot Metal Bridge.",
+    "description": "A river circuit split into three rentals at First Ave and South Side Trail.",
     "status": "map-reviewed",
     "startStationId": "49",
     "destination": {
@@ -2003,24 +2289,25 @@
     },
     "stationIds": [
       "49",
-      "8",
+      "31",
       "9",
+      "8",
       "26"
     ],
     "terrain": "Mostly shared-use trails with bridge ramps, short street connectors, and a small fine-gravel section. The Station Square/South Side connection includes busy-road riding and a railway crossing.",
     "bikeAdvice": "Either bike type can work. Choose this ride only if comfortable with the plotted street connectors; an e-bike can ease the longer outing.",
-    "rentalNote": "The full loop exceeds 30 minutes at the assumed 12–18 km/h. Check membership costs, or plan separate rentals only when bikes and docks are actually available. Nearby stations do not guarantee a free reset.",
+    "rentalNote": "Three rentals: station 49 → 31 → 9 → 49. At each planned stop, dock and confirm the rental ended before re-renting. Check bikes and docks for every stop before departure.",
     "cautions": [
-      "Walk short station access paths and use marked crossings at Second Avenue and bridge approaches.",
-      "The Station Square connector uses streets, including part of East Carson Street. This is not a continuous protected trail.",
-      "Cross railway tracks at the marked crossing near S 4th Street; never enter a closed crossing.",
-      "Check current trail notices. The campus connection is excluded; start and finish at station 49."
+      "Use marked crossings and walk the short dock-access paths where bicycle access is unclear.",
+      "The Station Square/South Side connection includes busy roads, part of East Carson Street, and the marked railway crossing near S 4th Street.",
+      "Each stop must end your rental before re-renting. Check current dock and bike availability; a planned stop does not reserve either.",
+      "Start a fresh rental at station 49; travel from TCS is separate. Follow current signs and trail notices."
     ],
     "overview": [
-      "Start at station 49 and use the plotted crossing to reach Eliza Furnace Trail.",
-      "Ride toward downtown and follow the mapped connection onto Smithfield Street Bridge.",
-      "Use the Station Square/South Side street connector, then join South Side Trail near S 4th Street.",
-      "Follow the trail upstream, cross the bicycle side of Hot Metal Bridge, and return to station 49."
+      "Start a fresh rental at station 49, Technology Dr & Bates St.",
+      "Follow Eliza Furnace Trail and the plotted access to station 31, First Ave & B St; dock and re-rent.",
+      "Cross Smithfield Street Bridge and follow the plotted street/trail connection to station 9; dock and re-rent.",
+      "Follow the South Side route to the bicycle side of Hot Metal Bridge and return to dock at station 49."
     ],
     "sources": [
       {
@@ -2390,92 +2677,160 @@
         -79.992183
       ],
       [
-        40.43406,
-        -79.993234
+        40.434061,
+        -79.992288
       ],
       [
-        40.434083,
-        -79.993371
+        40.434063,
+        -79.992307
       ],
       [
-        40.434168,
-        -79.993673
+        40.434085,
+        -79.9926
       ],
       [
-        40.434192,
-        -79.993797
+        40.434112,
+        -79.992908
       ],
       [
-        40.434246,
-        -79.994912
+        40.434232,
+        -79.993796
       ],
       [
-        40.434306,
-        -79.995261
+        40.434293,
+        -79.994681
       ],
       [
-        40.43433,
-        -79.99532
+        40.434312,
+        -79.994775
       ],
       [
-        40.434383,
-        -79.9954
+        40.434373,
+        -79.994882
       ],
       [
-        40.434412,
-        -79.995475
+        40.434406,
+        -79.994968
       ],
       [
-        40.434429,
-        -79.995663
+        40.434461,
+        -79.995191
       ],
       [
-        40.434438,
-        -79.995816
+        40.434516,
+        -79.995362
       ],
       [
-        40.434425,
-        -79.995953
+        40.43462,
+        -79.995535
       ],
       [
-        40.434469,
-        -79.996144
+        40.435023,
+        -79.995267
       ],
       [
-        40.434576,
-        -79.996365
+        40.43512,
+        -79.995203
       ],
       [
-        40.434654,
-        -79.996743
+        40.435161,
+        -79.995176
       ],
       [
-        40.434724,
-        -79.996875
+        40.435225,
+        -79.995342
       ],
       [
-        40.434745,
-        -79.996915
+        40.435345,
+        -79.995643
       ],
       [
-        40.434822,
-        -79.997126
+        40.435609,
+        -79.99628
       ],
       [
-        40.434943,
-        -79.997474
+        40.435634,
+        -79.996335
       ],
       [
-        40.435534,
-        -79.998476
+        40.435639,
+        -79.996346
       ],
       [
-        40.435659,
-        -79.998664
+        40.435725,
+        -79.996536
       ],
       [
-        40.435817,
-        -79.99886
+        40.435772,
+        -79.996639
+      ],
+      [
+        40.435825,
+        -79.996782
+      ],
+      [
+        40.435781,
+        -79.99681
+      ],
+      [
+        40.435765,
+        -79.99687
+      ],
+      [
+        40.4358,
+        -79.99697
+      ],
+      [
+        40.435765,
+        -79.99687
+      ],
+      [
+        40.435781,
+        -79.99681
+      ],
+      [
+        40.435825,
+        -79.996782
+      ],
+      [
+        40.436013,
+        -79.997286
+      ],
+      [
+        40.43603,
+        -79.997332
+      ],
+      [
+        40.43607,
+        -79.997438
+      ],
+      [
+        40.436131,
+        -79.997602
+      ],
+      [
+        40.436149,
+        -79.997649
+      ],
+      [
+        40.436437,
+        -79.998423
+      ],
+      [
+        40.436496,
+        -79.998581
+      ],
+      [
+        40.436399,
+        -79.998612
+      ],
+      [
+        40.43624,
+        -79.998718
+      ],
+      [
+        40.436054,
+        -79.998829
       ],
       [
         40.435896,
@@ -3206,120 +3561,48 @@
         -79.963338
       ],
       [
-        40.42837,
-        -79.963343
+        40.428381,
+        -79.9632
       ],
       [
-        40.427968,
-        -79.963802
+        40.428108,
+        -79.962681
       ],
       [
-        40.428032,
-        -79.963899
+        40.427992,
+        -79.96256
       ],
       [
-        40.428024,
-        -79.963908
+        40.427796,
+        -79.962412
       ],
       [
-        40.427997,
-        -79.963939
+        40.427644,
+        -79.962213
       ],
       [
-        40.427931,
-        -79.963851
+        40.427707,
+        -79.962121
       ],
       [
-        40.427893,
-        -79.963894
+        40.427683,
+        -79.962096
       ],
       [
-        40.427718,
-        -79.964093
+        40.427673,
+        -79.962114
       ],
       [
-        40.427652,
-        -79.963993
+        40.427642,
+        -79.96217
       ],
       [
-        40.427577,
-        -79.96388
+        40.427632,
+        -79.96217
       ],
       [
-        40.427493,
-        -79.963752
-      ],
-      [
-        40.427111,
-        -79.963187
-      ],
-      [
-        40.426975,
-        -79.962984
-      ],
-      [
-        40.426942,
-        -79.962934
-      ],
-      [
-        40.426975,
-        -79.962897
-      ],
-      [
-        40.426983,
-        -79.962892
-      ],
-      [
-        40.427153,
-        -79.962704
-      ],
-      [
-        40.427182,
-        -79.962698
-      ],
-      [
-        40.427212,
-        -79.962705
-      ],
-      [
-        40.427214,
-        -79.96269
-      ],
-      [
-        40.427252,
-        -79.96264
-      ],
-      [
-        40.427285,
-        -79.962596
-      ],
-      [
-        40.427292,
-        -79.962577
-      ],
-      [
-        40.427316,
-        -79.962513
-      ],
-      [
-        40.427409,
-        -79.96237
-      ],
-      [
-        40.427421,
-        -79.962336
-      ],
-      [
-        40.42745,
-        -79.962287
-      ],
-      [
-        40.427547,
-        -79.962123
-      ],
-      [
-        40.427549,
-        -79.962119
+        40.427575,
+        -79.962113
       ],
       [
         40.427562,
@@ -3490,24 +3773,12 @@
         -79.960166
       ],
       [
-        40.43002,
-        -79.960474
-      ],
-      [
-        40.430056,
-        -79.960526
+        40.430306,
+        -79.960259
       ],
       [
         40.430333,
-        -79.960281
-      ],
-      [
-        40.4305,
-        -79.960134
-      ],
-      [
-        40.430464,
-        -79.960077
+        -79.960194
       ],
       [
         40.43044,
@@ -3604,28 +3875,45 @@
       220.75,
       223.75,
       228.5,
-      245,
-      247,
-      247.25,
+      231,
+      231.5,
+      236.25,
+      242,
       245.75,
-      219.75,
-      217.75,
-      218,
-      218.5,
-      218.75,
-      218.5,
-      218.25,
-      218.25,
-      218.75,
+      226.75,
+      224.5,
+      222.25,
+      220.5,
       220,
-      221.25,
-      222.5,
-      223,
-      224.75,
+      220.25,
+      220.75,
+      227,
       227.75,
-      232.5,
+      228.25,
+      227.5,
+      226.75,
+      229.75,
+      230.25,
+      230.5,
       232,
-      232,
+      233,
+      234.5,
+      234.25,
+      234.5,
+      239.25,
+      234.5,
+      234.25,
+      234.5,
+      239,
+      239.5,
+      240.25,
+      240.5,
+      240.5,
+      238.25,
+      237.75,
+      237.25,
+      235.75,
+      234,
       232.25,
       231.5,
       231.25,
@@ -3808,43 +4096,25 @@
       222.5,
       223,
       223.5,
+      224,
+      224,
+      224.25,
       224.5,
-      225.5,
-      225.5,
-      225.5,
-      225.5,
-      225.75,
-      225.75,
-      226.25,
-      226.25,
-      226.5,
-      226.25,
-      226,
-      226,
-      226.25,
-      226.25,
-      226.25,
-      226.5,
-      226.25,
-      226.25,
-      226.25,
-      226.25,
-      226.25,
-      226.25,
-      226.25,
-      226,
-      226,
-      225.75,
-      225.75,
-      225.75,
-      225.75,
-      225.25,
-      225.25,
-      225.25,
-      225,
       225,
       224.5,
-      222,
+      224.5,
+      224.25,
+      224.25,
+      224.25,
+      224.25,
+      224.25,
+      224,
+      224,
+      224,
+      223.75,
+      223.75,
+      223.5,
+      221.75,
       222,
       222.25,
       225.25,
@@ -3879,14 +4149,11 @@
       223,
       223.5,
       223.5,
-      220.25,
-      220.25,
-      223.75,
-      225.5,
-      225.5,
-      224
+      223.5,
+      224,
+      225.5
     ],
-    "ascentMeters": 41,
+    "ascentMeters": 43,
     "checkpoints": [
       {
         "name": "Technology Dr & Bates St · station 49",
@@ -3899,6 +4166,11 @@
         "lon": -79.992183
       },
       {
+        "name": "Dock and re-rent · station 31 · First Ave & B St",
+        "lat": 40.435829,
+        "lon": -79.996952
+      },
+      {
         "name": "Smithfield Street Bridge · north approach",
         "lat": 40.436277,
         "lon": -80.001063
@@ -3909,19 +4181,19 @@
         "lon": -80.003692
       },
       {
-        "name": "South Side Trail · station 9",
+        "name": "Dock and re-rent · station 9 · South Side Trail & S 4th St",
         "lat": 40.431336,
         "lon": -79.995106
       },
       {
         "name": "Hot Metal Bridge · south approach",
-        "lat": 40.4271,
-        "lon": -79.9632
+        "lat": 40.427764,
+        "lon": -79.96175
       },
       {
         "name": "Hot Metal Bridge · north approach",
-        "lat": 40.4296,
-        "lon": -79.9609
+        "lat": 40.429355,
+        "lon": -79.958981
       },
       {
         "name": "Return to station 49",
@@ -3932,30 +4204,49 @@
     "source": {
       "provider": "BRouter-1.7.11-beta",
       "profile": "trekking",
-      "url": "https://brouter.de/brouter?lonlats=-79.960123%2C40.430455%7C-79.992183%2C40.433999%7C-80.001063%2C40.436277%7C-80.003692%2C40.432143%7C-79.995106%2C40.431336%7C-79.9632%2C40.4271%7C-79.9609%2C40.4296%7C-79.960123%2C40.430455&profile=trekking&alternativeidx=0&format=geojson",
-      "fetchedAt": "2026-10-30T04:07:59.786Z",
+      "url": "https://brouter.de/brouter?lonlats=-79.960123%2C40.430455%7C-79.992183%2C40.433999%7C-79.996952%2C40.435829%7C-80.001063%2C40.436277%7C-80.003692%2C40.432143%7C-79.995106%2C40.431336%7C-79.96175%2C40.427764%7C-79.958981%2C40.429355%7C-79.960123%2C40.430455&profile=trekking&alternativeidx=0&format=geojson",
+      "fetchedAt": "2026-11-03T19:58:26.107Z",
       "attribution": "© OpenStreetMap contributors · ODbL 1.0",
       "license": "https://opendatacommons.org/licenses/odbl/1-0/",
       "auditFile": "route-data/river-loop.json",
-      "walkMeters": 178,
-      "roadMeters": 1008
-    },
-    "review": {
-      "date": "2026-10-30",
-      "fieldRidden": false,
-      "geometryHash": "38b2ffa486ec1e7e31699a3491a5f5bfd79890e8cbe410b2118055425a42549f",
-      "checks": [
-        "Visual comparison with street/trail map and official park/trail references",
-        "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",
-        "Routing access/one-way tags inspected; no flagged steps, bicycle prohibition, or reverse one-way",
-        "Street connectors, conservative walking sections, and rental-time limits disclosed"
-      ],
-      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified."
+      "walkMeters": 104,
+      "roadMeters": 1158
     },
     "categories": [
       "trails",
       "longer"
-    ]
+    ],
+    "rentalPlan": {
+      "schema": 1,
+      "bufferMinutes": 5,
+      "stops": [
+        {
+          "stationId": "31",
+          "name": "First Ave & B St",
+          "pointIndex": 114
+        },
+        {
+          "stationId": "9",
+          "name": "South Side Trail & S 4th St",
+          "pointIndex": 192
+        }
+      ]
+    },
+    "quickNote": "Dock and re-rent at stations 31 and 9. Includes busy streets and a railway crossing.",
+    "review": {
+      "date": "2026-11-03",
+      "fieldRidden": false,
+      "geometryHash": "83f89ed72bc7f81a349050dd4551b3193b1cbca414de9a2a62cfdb355455ac4b",
+      "checks": [
+        "Visual comparison with street/trail map and official park/trail references",
+        "Start/finish, checkpoint order, bridge approaches, and trail connections inspected",
+        "Routing access/one-way tags inspected; no flagged steps, bicycle prohibition, or reverse one-way",
+        "Street connectors, conservative walking sections, and rental-time limits disclosed",
+        "Plotted docking approaches and ordered rental legs reviewed with walking allowance and docking buffer"
+      ],
+      "limitations": "Map review only. Current closures, signage, bike condition, and real-device navigation have not been field verified.",
+      "rentalPlanHash": "4524f099f87b1d6bc9107ce63bde9e1701ee8ee907921a9fb39f62dcf8e8b92c"
+    }
   },
   {
     "id": "eliza-quick",
