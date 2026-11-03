@@ -267,3 +267,15 @@ overflow. Stop map buttons center the actual dock access; D1/D2 remain visible,
 per-leg values match validation, GPX links target the revised files, and the
 browser error log is empty. Summary refreshed from the checkout to November 3,
 19:53:17 UTC, with 144/144 recent ten-minute slots. Publication follows.
+
+
+Rental-reset publication verified: feature commit `593caa6`, then checkpoint
+label correction `a4d23fb`; Pages runs 41718213578 and 41718464852 succeeded,
+including all 60 tests. The HTTPS root plus 31 runtime assets returned 200.
+All ten hosted GPXs exactly match the current library, with the correct MIME;
+reviewed rental plans and the final checkpoint label were checked publicly.
+Hosted browser QA confirmed live stop counts, phone layout without overflow,
+correct download URL, and successful v8 Update activation. Browser error log
+was empty. Published Eliza screenshot saved outside the repository. The owned
+preview was stopped and its tab closed; the user's other preview was untouched.
+No physical ride, same-day access guarantee, or new Watch test is claimed.
