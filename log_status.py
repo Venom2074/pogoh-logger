@@ -8,6 +8,9 @@ Standard library only.
 import csv
 import json
 import os
+import sys
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
@@ -34,8 +37,23 @@ def fetch(feed):
     req = urllib.request.Request(
         f"{BASE}/{feed}", headers={"User-Agent": "personal-pogoh-logger"}
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.load(resp)
+    for delay in (2, 4, 0):
+        try:
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as exc:
+            exc.close()
+            # The public feed has returned a transient 403 to GitHub runners.
+            transient = exc.code in (403, 408, 429) or 500 <= exc.code < 600
+            if not delay or not transient:
+                raise
+            error = str(exc)
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            if not delay:
+                raise
+            error = str(exc)
+        print(f"{feed}: {error}. Retrying in {delay}s.", file=sys.stderr)
+        time.sleep(delay)
 
 
 def name_text(value):
